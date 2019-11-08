@@ -5,4 +5,5 @@
     <string name="hintPassword">Entrez votre mot de passe</string>
     <string name="btnLogin">Connexion</string>
     <string name="toolbarTitle">Bdeb</string>
+    <string name="btnGoogle">Connexion par Google</string>
 </resources>

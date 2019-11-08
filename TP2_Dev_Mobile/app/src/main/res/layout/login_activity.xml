@@ -48,7 +48,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="95dp"
-            android:layout_marginTop="420dp"
+            android:layout_marginTop="370dp"
             android:layout_marginEnd="95dp"
             android:ems="10"
             android:hint="@string/hintEmail"
@@ -62,11 +62,11 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="95dp"
-            android:layout_marginTop="510dp"
+            android:layout_marginTop="450dp"
             android:layout_marginEnd="95dp"
             android:ems="10"
             android:hint="@string/hintPassword"
-            android:inputType="textPersonName" />
+            android:inputType="textPassword" />
 
         <Button
             android:id="@+id/btnLogin"
@@ -75,9 +75,10 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="210dp"
-            android:layout_marginTop="600dp"
+            android:layout_marginStart="95dp"
+            android:layout_marginTop="530dp"
             android:layout_marginEnd="95dp"
+            android:backgroundTint="@android:color/white"
             android:text="@string/btnLogin" />
 
         <androidx.appcompat.widget.Toolbar
@@ -93,6 +94,21 @@
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/toolbar"
+            android:layout_alignEnd="@+id/toolbar"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="95dp"
+            android:layout_marginTop="627dp"
+            android:layout_marginEnd="95dp"
+            android:drawableLeft="@drawable/google_icon"
+            android:text="@string/btnGoogle"
+            android:backgroundTint="@android:color/white"/>
+
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
