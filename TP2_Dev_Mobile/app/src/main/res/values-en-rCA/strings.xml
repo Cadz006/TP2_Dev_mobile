@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TP2_Dev_Mobile</string>
+    <string name="appName">Photo Challenge</string>
+    <string name="hintEmail">Enter your email</string>
+    <string name="hintPassword">Enter your password</string>
+    <string name="btnLogin">Connect</string>
+    <string name="toolbarTitle">Bdeb</string>
+</resources>
