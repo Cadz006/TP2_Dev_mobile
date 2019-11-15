@@ -17,7 +17,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
-        etxtEmail = findViewById(R.id.etxtEmail);
+        etxtEmail = findViewById(R.id.textEmail);
         etxtPassword = findViewById(R.id.etxtPassword);
 
         toolbarSetup();
