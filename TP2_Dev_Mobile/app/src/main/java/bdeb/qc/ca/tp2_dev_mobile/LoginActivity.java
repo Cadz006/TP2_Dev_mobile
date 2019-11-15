@@ -1,23 +1,26 @@
 package bdeb.qc.ca.tp2_dev_mobile;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
+    private EditText etxtEmail;
+    private EditText etxtPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
-
-        final EditText etxtEmail = findViewById(R.id.etxtEmail);
-        final EditText etxtPassword = findViewById(R.id.etxtPassword);
+        etxtEmail = findViewById(R.id.etxtEmail);
+        etxtPassword = findViewById(R.id.etxtPassword);
 
         toolbarSetup();
         btnListener(etxtEmail, etxtPassword);
@@ -35,13 +38,24 @@ public class MainActivity extends AppCompatActivity {
                 else if (etPassword.getText().toString().trim().isEmpty()) {
                     etPassword.setError("Veuillez entrer un mot de passe!");
                 }
+                else {
+                    Intent login = new Intent(LoginActivity.this, AcceuilActivity.class);
+                    startActivity(login);
+                }
             }
         });
     }
 
     private void toolbarSetup() {
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbarAcceuil);
         toolbar.setTitle(getResources().getString(R.string.toolbarTitle));
         setSupportActionBar(toolbar);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        etxtEmail.setText("");
+        etxtPassword.setText("");
     }
 }
