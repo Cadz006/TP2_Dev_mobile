@@ -1,12 +1,10 @@
 package bdeb.qc.ca.tp2_dev_mobile;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
                     etPassword.setError("Veuillez entrer un mot de passe!");
                 }
                 else {
-                    Intent login = new Intent(LoginActivity.this, AcceuilActivity.class);
+                    Intent login = new Intent(LoginActivity.this, AcceuilEtudiantActivity.class);
                     startActivity(login);
                 }
             }

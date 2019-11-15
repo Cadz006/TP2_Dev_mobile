@@ -9,13 +9,18 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-public class AcceuilActivity extends AppCompatActivity {
+public class AcceuilEtudiantActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.acceuil_activity);
+        setContentView(R.layout.acceuil_etudiant_activity);
 
+        toolbarSetup();
+    }
+
+    private void toolbarSetup() {
         Toolbar toolbar = findViewById(R.id.toolbarAcceuil);
+        toolbar.setTitle(getResources().getString(R.string.toolbarTitle));
         setSupportActionBar(toolbar);
     }
 
