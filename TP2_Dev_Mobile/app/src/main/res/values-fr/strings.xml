@@ -7,4 +7,5 @@
     <string name="btnLogin">Connexion</string>
     <string name="toolbarTitle">Bdeb</string>
     <string name="btnGoogle">Connexion par Google</string>
+    <string name="toolBarAccProf">Menu pour l\'enseignant</string>
 </resources>
