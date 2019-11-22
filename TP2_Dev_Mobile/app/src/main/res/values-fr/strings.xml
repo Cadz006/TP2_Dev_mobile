@@ -8,4 +8,9 @@
     <string name="toolbarTitle">Bdeb</string>
     <string name="btnGoogle">Connexion par Google</string>
     <string name="toolBarAccProf">Menu pour l\'enseignant</string>
+    <string name="triActivitesCompl">Tri par activités complétées</string>
+    <string name="triAlphaEtudiants">Tri alphabétique</string>
+    <string name="email">Adresse courielle</string>
+    <string name="nomFamille">Nom de famille</string>
+    <string name="prenom">Prénom</string>
 </resources>

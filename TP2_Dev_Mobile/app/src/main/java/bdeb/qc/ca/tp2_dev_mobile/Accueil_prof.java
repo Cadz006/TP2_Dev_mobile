@@ -3,19 +3,29 @@ package bdeb.qc.ca.tp2_dev_mobile;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+
 public class Accueil_prof extends AppCompatActivity {
+
+    private ArrayList<Etudiant> listClient;
+    private RecyclerView recyclerView;
+    private EtudiantAdapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
+    public int positionEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accueil_prof);
         toolbarSetup();
+
     }
 
     private void toolbarSetup() {
@@ -37,9 +47,9 @@ public class Accueil_prof extends AppCompatActivity {
             case R.id.triAlpha:
                 finish();
                 break;
-                case R.id.triActCompl:
-
-
+            case R.id.triActCompl:
+                finish();
+                break;
         }
         return true;
     }

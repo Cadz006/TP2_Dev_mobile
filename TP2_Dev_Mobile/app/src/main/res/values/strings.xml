@@ -7,4 +7,9 @@
     <string name="toolbarTitle">Bois-de-Boulogne</string>
     <string name="btnGoogle">Connexion par Google</string>
     <string name="toolBarAccProf">Menu d"'accueil pour enseignant</string>
+    <string name="triAlphaEtudiants">Tri alphabétique</string>
+    <string name="triActivitesCompl">Tri par activités complétées</string>
+    <string name="nomFamille">Nom de famille</string>
+    <string name="prenom">Prenom</string>
+    <string name="email">E-mail</string>
 </resources>
