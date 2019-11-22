@@ -8,4 +8,6 @@
     <string name="toolbarTitle">Bdeb</string>
     <string name="btnGoogle">Connexion par Google</string>
     <string name="toolBarAccProf">Menu pour l\'enseignant</string>
+    <string name="errorLoginEmail">Veuillez entrer votre courriel!</string>
+    <string name="errorLoginPassword">Veuillez entrer votre mot de passe!</string>
 </resources>
