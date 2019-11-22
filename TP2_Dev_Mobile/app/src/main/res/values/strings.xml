@@ -1,4 +1,4 @@
-<resources>
+﻿<resources>
     <string name="app_name">TP2_Dev_Mobile</string>
     <string name="appName">Défi Photo</string>
     <string name="hintEmail">Entrez votre émail</string>
@@ -12,4 +12,6 @@
     <string name="nomFamille">Nom de famille</string>
     <string name="prenom">Prenom</string>
     <string name="email">E-mail</string>
+    <string name="errorLoginEmail">Veuillez entrer votre courriel!</string>
+    <string name="errorLoginPassword">Veuillez entrer votre mot de passe!</string>
 </resources>

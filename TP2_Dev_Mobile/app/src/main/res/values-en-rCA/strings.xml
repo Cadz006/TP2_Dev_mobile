@@ -7,10 +7,10 @@
     <string name="btnLogin">Connect</string>
     <string name="toolbarTitle">Bdeb</string>
     <string name="btnGoogle">Connect with Google</string>
-    <string name="toolBarAccProf">Menu for teacher</string>
-    <string name="triActivitesCompl">Completed activities order</string>
+    <string name="toolBarAccProf">Menu for teacher</string>    <string name="triActivitesCompl">Completed activities order</string>
     <string name="triAlphaEtudiants">Alphabetic order</string>
     <string name="nomFamille">Last name</string>
     <string name="prenom">First name</string>
     <string name="email">Email</string>
-</resources>
+    <string name="errorLoginEmail">Please enter your email!</string>
+    <string name="errorLoginPassword">Please enter your password!</string></resources>
