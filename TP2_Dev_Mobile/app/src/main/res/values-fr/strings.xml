@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">TP2_Dev_Mobile</string>
     <string name="appName">Defi Photo</string>
@@ -8,6 +8,11 @@
     <string name="toolbarTitle">Bdeb</string>
     <string name="btnGoogle">Connexion par Google</string>
     <string name="toolBarAccProf">Menu pour l\'enseignant</string>
+    <string name="triActivitesCompl">Tri par activités complétées</string>
+    <string name="triAlphaEtudiants">Tri alphabétique</string>
+    <string name="email">Adresse courielle</string>
+    <string name="nomFamille">Nom de famille</string>
+    <string name="prenom">Prénom</string>
     <string name="errorLoginEmail">Veuillez entrer votre courriel!</string>
     <string name="errorLoginPassword">Veuillez entrer votre mot de passe!</string>
 </resources>
