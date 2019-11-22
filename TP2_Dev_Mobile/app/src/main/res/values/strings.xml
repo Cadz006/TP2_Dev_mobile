@@ -1,4 +1,4 @@
-<resources>
+﻿<resources>
     <string name="app_name">TP2_Dev_Mobile</string>
     <string name="appName">Défi Photo</string>
     <string name="hintEmail">Entrez votre émail</string>
@@ -9,4 +9,11 @@
     <string name="toolBarAccProf">Menu d"'accueil pour enseignant</string>
     <string name="readCommentText">Lire un commentaire écrit</string>
     <string name="listenCommentAudio">Écouter un commentaire audio</string>
+    <string name="triAlphaEtudiants">Tri alphabétique</string>
+    <string name="triActivitesCompl">Tri par activités complétées</string>
+    <string name="nomFamille">Nom de famille</string>
+    <string name="prenom">Prenom</string>
+    <string name="email">E-mail</string>
+    <string name="errorLoginEmail">Veuillez entrer votre courriel!</string>
+    <string name="errorLoginPassword">Veuillez entrer votre mot de passe!</string>
 </resources>
