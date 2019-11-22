@@ -4,6 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MetierActivity">
+    tools:context=".Activities.MetierActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="335dp"
+        tools:layout_editor_absoluteX="153dp"
+        tools:layout_editor_absoluteY="108dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

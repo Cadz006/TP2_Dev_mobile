@@ -1,8 +1,10 @@
-package bdeb.qc.ca.tp2_dev_mobile;
+package bdeb.qc.ca.tp2_dev_mobile.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import bdeb.qc.ca.tp2_dev_mobile.R;
 
 public class MetierActivity extends AppCompatActivity
 {
