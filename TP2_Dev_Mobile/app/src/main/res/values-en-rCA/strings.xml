@@ -16,4 +16,7 @@
     <string name="prenom">First name</string>
     <string name="email">Email</string>
     <string name="errorLoginEmail">Please enter your email!</string>
-    <string name="errorLoginPassword">Please enter your password!</string></resources>
+    <string name="errorLoginPassword">Please enter your password!</string>
+    <string name="QuestionEtudiant">The question of the student</string>
+</resources>
+

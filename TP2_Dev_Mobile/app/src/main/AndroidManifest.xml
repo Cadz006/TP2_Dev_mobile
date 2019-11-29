@@ -15,9 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".Commentaire"></activity>
-        <activity android:name=".Accueil_prof"></activity>
+        <activity android:name=".QuestionEtudiantActivity"></activity>
+        <activity android:name=".Accueil_prof" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
