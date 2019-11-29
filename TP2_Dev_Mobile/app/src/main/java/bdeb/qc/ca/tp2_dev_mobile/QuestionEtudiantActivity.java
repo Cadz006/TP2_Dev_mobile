@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Commentaire extends AppCompatActivity {
+public class QuestionEtudiantActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_commentaire);
+        setContentView(R.layout.activity_question_etudiant);
     }
 }
