@@ -13,8 +13,6 @@
         android:layout_marginStart="128dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="129dp"
-        android:layout_marginBottom="204dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtReponseEtudiant"
@@ -49,11 +47,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:longClickable="false"
         app:backgroundTint="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtQuestionEtudiant"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarQuestionEtudiant"
         app:srcCompat="@drawable/ic_mic" />
 
     <androidx.appcompat.widget.Toolbar
@@ -67,19 +65,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txtQuestionEtudiant"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textSize="25sp"
-        android:text="@string/QuestionEtudiant"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarQuestionEtudiant" />
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabGallery"
         android:layout_width="wrap_content"
@@ -91,27 +76,6 @@
         app:layout_constraintTop_toTopOf="@+id/fabCamera"
         app:srcCompat="@drawable/ic_menu_gallery" />
 
-    <Button
-        android:id="@+id/BtnAnswerAudio"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/ic_mic"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TxAnswerEtudiantNotice" />
-
-    <TextView
-        android:id="@+id/TxAnswerEtudiantNotice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TxQuestionEtudiant" />
     <EditText
         android:id="@+id/txtReponseEtudiant"
         android:layout_width="0dp"
@@ -132,13 +96,28 @@
         android:id="@+id/txtCommenaire"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="30dp"
         android:inputType="textMultiLine"
         android:maxLines="4"
         android:text="@string/noComment"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fabEcouterCommentaire" />
+
+    <SeekBar
+        android:id="@+id/seekBarCommentaire"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="30dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/fabEcouterCommentaire"
         app:layout_constraintTop_toTopOf="@+id/fabEcouterCommentaire" />
 
