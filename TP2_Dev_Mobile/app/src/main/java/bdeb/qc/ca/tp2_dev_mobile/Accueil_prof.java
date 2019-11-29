@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -20,7 +21,7 @@ public class Accueil_prof extends AppCompatActivity {
     private RecyclerView recyclerView;
     private EtudiantAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    public int positionEdit;
+    public int positionEtudiant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,16 @@ public class Accueil_prof extends AppCompatActivity {
         toolbar.setTitle(getResources().getString(R.string.toolBarAccProf));
         setSupportActionBar(toolbar);
 
+        Etudiant etudiant1 = new Etudiant("Cadieux", "Olivier", "ocadz@hotmail.ca", true, "", "");
+        Etudiant etudiant2 = new Etudiant("De La Barrière", "Guillaume", "mightguy@hotmail.ca", true, "", "");
+        Etudiant etudiant3 = new Etudiant("Phalakhone", "Nick", "nick@hotmail.ca", true, "", "");
+
         listEtudiant = new ArrayList<>();
+
+        listEtudiant.add(etudiant1);
+        listEtudiant.add(etudiant2);
+        listEtudiant.add(etudiant3);
+
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -50,8 +60,18 @@ public class Accueil_prof extends AppCompatActivity {
         adapter = new EtudiantAdapter(listEtudiant);
     }
 
+    public void selectionEtudiant(int position){
+        positionEtudiant = position;
+        Intent intent = new Intent(this,AcceuilEtudiantActivity.class);
+        Etudiant etudiant = listEtudiant.get(position);
+        intent.putExtra("nom", etudiant.getNom());
+        intent.putExtra("prenom", etudiant.getPrenom());
+        startActivityForResult(intent, 2);
+    }
+
     public void notifyItemSelected(int position) {
         Log.v("RecyclerView", "" + position + " a été sélectionné: " + listEtudiant.get(position).getNom());
+        selectionEtudiant(position);
     }
 
     @Override
