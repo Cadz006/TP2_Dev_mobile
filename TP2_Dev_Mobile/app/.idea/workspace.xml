@@ -112,14 +112,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/bdeb/qc/ca/tp2_dev_mobile/QuestionEtudiantActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="47" column="43" selection-start-line="47" selection-start-column="43" selection-end-line="47" selection-end-column="43" />
+            <state relative-caret-position="517">
+              <caret line="77" column="28" selection-start-line="77" selection-start-column="28" selection-end-line="77" selection-end-column="28" />
               <folding>
-                <element signature="e#1052#1311#0" expanded="true" />
-                <element signature="e#1310#1311#0" expanded="true" />
+                <element signature="e#1234#1390#0" expanded="true" />
+                <element signature="e#1389#1390#0" expanded="true" />
                 <element signature="e#1249#1496#0" expanded="true" />
                 <element signature="e#1495#1496#0" expanded="true" />
               </folding>
@@ -127,7 +127,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_question_etudiant.xml">
           <provider editor-type-id="text-editor" />
           <provider selected="true" editor-type-id="android-designer2" />
@@ -177,8 +177,8 @@
         <option value="$PROJECT_DIR$/src/main/res/layout/camera_activity.xml" />
         <option value="$PROJECT_DIR$/src/main/java/bdeb/qc/ca/tp2_dev_mobile/CameraActivity.java" />
         <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/bdeb/qc/ca/tp2_dev_mobile/QuestionEtudiantActivity.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/activity_question_etudiant.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/bdeb/qc/ca/tp2_dev_mobile/QuestionEtudiantActivity.java" />
       </list>
     </option>
   </component>
@@ -479,19 +479,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bdeb/qc/ca/tp2_dev_mobile/QuestionEtudiantActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="47" column="43" selection-start-line="47" selection-start-column="43" selection-end-line="47" selection-end-column="43" />
-          <folding>
-            <element signature="e#1052#1311#0" expanded="true" />
-            <element signature="e#1310#1311#0" expanded="true" />
-            <element signature="e#1249#1496#0" expanded="true" />
-            <element signature="e#1495#1496#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
       <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
@@ -513,6 +500,19 @@
     <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_question_etudiant.xml">
       <provider editor-type-id="text-editor" />
       <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bdeb/qc/ca/tp2_dev_mobile/QuestionEtudiantActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="517">
+          <caret line="77" column="28" selection-start-line="77" selection-start-column="28" selection-end-line="77" selection-end-column="28" />
+          <folding>
+            <element signature="e#1234#1390#0" expanded="true" />
+            <element signature="e#1389#1390#0" expanded="true" />
+            <element signature="e#1249#1496#0" expanded="true" />
+            <element signature="e#1495#1496#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

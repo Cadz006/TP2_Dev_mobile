@@ -1,10 +1,15 @@
 package bdeb.qc.ca.tp2_dev_mobile;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -36,8 +41,7 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
         fabCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent, PRENDRE_PHOTO);
+                verifyPermissions();
             }
         });
 
@@ -50,10 +54,28 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
         });
     }
 
+    private void openCamera() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, PRENDRE_PHOTO);
+    }
+
     private void verifyPermissions(){
         String[] permissions = {Manifest.permission.CAMERA};
 
+        if(ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                permissions[0]) == PackageManager.PERMISSION_GRANTED){
+            openCamera();
+        }
+        else{
+            ActivityCompat.requestPermissions(QuestionEtudiantActivity.this,
+                    permissions,
+                    PRENDRE_PHOTO);
+        }
+    }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        verifyPermissions();
     }
 
     @Override
