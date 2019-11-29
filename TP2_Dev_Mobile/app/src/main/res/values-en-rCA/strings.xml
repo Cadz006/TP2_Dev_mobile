@@ -19,5 +19,7 @@
     <string name="errorLoginPassword">Please enter your password!</string>
     <string name="QuestionEtudiant">The question of the student</string>
     <string name="estActif">Active</string>
+    <string name="noComment">No comment for now</string>
+    <string name="addAnswerStudent">Answer the question</string>
 </resources>
 
