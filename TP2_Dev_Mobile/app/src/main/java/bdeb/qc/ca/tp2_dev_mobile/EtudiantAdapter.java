@@ -38,8 +38,6 @@ public class EtudiantAdapter extends RecyclerView.Adapter<EtudiantAdapter.Etudia
             tvPrenom = itemView.findViewById(R.id.prenom);
             tvEmail = itemView.findViewById(R.id.email);
 
-
-
         }
     }
 
