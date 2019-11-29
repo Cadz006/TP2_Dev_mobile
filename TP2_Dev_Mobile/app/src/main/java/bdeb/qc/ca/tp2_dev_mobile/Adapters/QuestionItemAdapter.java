@@ -15,13 +15,13 @@ import bdeb.qc.ca.tp2_dev_mobile.R;
 
 public class QuestionItemAdapter extends RecyclerView.Adapter<QuestionItemAdapter.QuestionItemViewHolder>
 {
-    private ArrayList<QuestionListItem> metierItems;
+    private ArrayList<QuestionListItem> questions;
     @NonNull
     @Override
     public QuestionItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
         View v = LayoutInflater.from(parent.getContext())
-                               .inflate(R.layout.metier_recycler_view_item,
+                               .inflate(R.layout.questions_recycler_view_item,
                                         parent,
                                         false);
         return new QuestionItemViewHolder(v);
@@ -30,30 +30,28 @@ public class QuestionItemAdapter extends RecyclerView.Adapter<QuestionItemAdapte
     @Override
     public void onBindViewHolder(@NonNull QuestionItemViewHolder holder, int position)
     {
-        QuestionListItem item = metierItems.get(position);
-        holder.title.setText(item.getTitle());
+        QuestionListItem item = questions.get(position);
+        holder.question.setText(item.getQuestion());
     }
 
     @Override
     public int getItemCount()
     {
-        return metierItems.size();
+        return questions.size();
     }
 
-    public QuestionItemAdapter(ArrayList<QuestionListItem> metierItems)
+    public QuestionItemAdapter(ArrayList<QuestionListItem> questions)
     {
-        this.metierItems = metierItems;
+        this.questions = questions;
     }
 
     public static class QuestionItemViewHolder extends RecyclerView.ViewHolder
     {
-        public TextView title;
-        public TextView completion;
+        public TextView question;
         public QuestionItemViewHolder(@NonNull View itemView)
         {
             super(itemView);
-            title = itemView.findViewById(R.id.metier_tvTitle);
-            completion = itemView.findViewById(R.id.metier_tvCompletion);
+            question = itemView.findViewById(R.id.questions_tvTitle);
         }
     }
 }
