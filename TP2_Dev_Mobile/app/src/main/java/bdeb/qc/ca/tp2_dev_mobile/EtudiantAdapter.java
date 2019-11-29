@@ -22,7 +22,9 @@ public class EtudiantAdapter extends RecyclerView.Adapter<EtudiantAdapter.Etudia
         void onItemClick(int position);
     }
 
-    public class EtudiantViewHolder extends RecyclerView.ViewHolder {
+    public void setOnItemClickListener(OnItemClickListener listener) { this.listener = listener; }
+
+    public static class EtudiantViewHolder extends RecyclerView.ViewHolder {
         public TextView tvNom;
         public TextView tvPrenom;
         public TextView tvEmail;
@@ -34,18 +36,18 @@ public class EtudiantAdapter extends RecyclerView.Adapter<EtudiantAdapter.Etudia
 
             tvNom = itemView.findViewById(R.id.nomFamille);
             tvPrenom = itemView.findViewById(R.id.prenom);
-
+            tvEmail = itemView.findViewById(R.id.email);
 
         }
     }
 
     public EtudiantAdapter(ArrayList<Etudiant> rveList) { this.rveList = rveList; }
 
-    public void setOnItemClickListener(OnItemClickListener listener) { this.listener = listener; }
+
 
     @NonNull
     @Override
-    public EtudiantAdapter.EtudiantViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public EtudiantViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_etudiant, parent, false);
         EtudiantViewHolder cvh = new EtudiantViewHolder(v, listener);
         return cvh;
@@ -57,6 +59,7 @@ public class EtudiantAdapter extends RecyclerView.Adapter<EtudiantAdapter.Etudia
 
         holder.tvNom.setText(etudiant.getNom());
         holder.tvPrenom.setText(etudiant.getPrenom());
+        holder.tvEmail.setText(etudiant.getEmail());
 
     }
 

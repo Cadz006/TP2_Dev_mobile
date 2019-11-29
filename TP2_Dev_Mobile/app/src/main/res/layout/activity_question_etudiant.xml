@@ -25,14 +25,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="510dp"
-        android:layout_marginBottom="108dp"
+        android:layout_marginTop="16dp"
         android:clickable="true"
         app:backgroundTint="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivPhoto"
         app:srcCompat="@drawable/ic_menu_camera" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabCamera3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="36dp"
+        android:clickable="true"
+        app:backgroundTint="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fabCamera"
+        app:srcCompat="@drawable/ic_menu_camera" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabReponseAudio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="24dp"
+        android:clickable="true"
+        app:backgroundTint="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtQuestionEtudiant"
+        app:srcCompat="@drawable/ic_mic" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -46,7 +68,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/TxQuestionEtudiant"
+        android:id="@+id/txtQuestionEtudiant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -62,14 +84,11 @@
         android:id="@+id/fabGallery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="510dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="108dp"
         android:clickable="true"
         app:backgroundTint="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fabCamera"
         app:srcCompat="@drawable/ic_menu_gallery" />
 
     <Button
@@ -93,7 +112,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TxQuestionEtudiant" />
-
     <EditText
         android:id="@+id/txtReponseEtudiant"
         android:layout_width="0dp"
@@ -103,10 +121,25 @@
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:gravity="start|top"
+        android:hint="@string/addAnswerStudent"
         android:inputType="textMultiLine"
         android:maxLines="5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/BtnAnswerAudio"
-        app:layout_constraintTop_toTopOf="@+id/BtnAnswerAudio" />
+        app:layout_constraintStart_toEndOf="@+id/fabReponseAudio"
+        app:layout_constraintTop_toTopOf="@+id/fabReponseAudio" />
+
+    <TextView
+        android:id="@+id/txtCommenaire"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:inputType="textMultiLine"
+        android:maxLines="4"
+        android:text="@string/noComment"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fabCamera3"
+        app:layout_constraintTop_toTopOf="@+id/fabCamera3" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
