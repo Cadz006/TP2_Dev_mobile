@@ -44,7 +44,7 @@ public class Accueil_prof extends AppCompatActivity {
 
         listEtudiant = new ArrayList<>();
 
-        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recViewMetierProg);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         adapter = new EtudiantAdapter(listEtudiant);
