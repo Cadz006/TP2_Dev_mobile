@@ -2,10 +2,23 @@
 <resources>
     <string name="app_name">TP2_Dev_Mobile</string>
     <string name="appName">Defi Photo</string>
-    <string name="hintEmail">Entrez votre Ã©mail</string>
+    <string name="hintEmail">Entrez votre émail</string>
     <string name="hintPassword">Entrez votre mot de passe</string>
     <string name="btnLogin">Connexion</string>
     <string name="toolbarTitle">Bdeb</string>
     <string name="btnGoogle">Connexion par Google</string>
     <string name="toolBarAccProf">Menu pour l\'enseignant</string>
+    <string name="readCommentText">Lire un commentaire écrit</string>
+    <string name="listenCommentAudio">Écouter un commentaire audio</string>
+    <string name="triActivitesCompl">Tri par activités complétées</string>
+    <string name="triAlphaEtudiants">Tri alphabétique</string>
+    <string name="email">Adresse courielle</string>
+    <string name="nomFamille">Nom de famille</string>
+    <string name="prenom">Prénom</string>
+    <string name="errorLoginEmail">Veuillez entrer votre courriel!</string>
+    <string name="errorLoginPassword">Veuillez entrer votre mot de passe!</string>
+    <string name="QuestionEtudiant">La question de l étudiant</string>
+    <string name="estActif">Actif</string>
+    <string name="noComment">Aucun commentaire pour l\'instant</string>
+    <string name="addAnswerStudent">Répondre à la question</string>
 </resources>

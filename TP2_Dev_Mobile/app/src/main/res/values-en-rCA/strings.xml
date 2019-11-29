@@ -7,5 +7,19 @@
     <string name="btnLogin">Connect</string>
     <string name="toolbarTitle">Bdeb</string>
     <string name="btnGoogle">Connect with Google</string>
+    <string name="readCommentText">Read a written comment</string>
+    <string name="listenCommentAudio">Listen to an audio comment</string>
     <string name="toolBarAccProf">Menu for teacher</string>
+    <string name="triActivitesCompl">Completed activities order</string>
+    <string name="triAlphaEtudiants">Alphabetic order</string>
+    <string name="nomFamille">Last name</string>
+    <string name="prenom">First name</string>
+    <string name="email">Email</string>
+    <string name="errorLoginEmail">Please enter your email!</string>
+    <string name="errorLoginPassword">Please enter your password!</string>
+    <string name="QuestionEtudiant">The question of the student</string>
+    <string name="estActif">Active</string>
+    <string name="noComment">No comment for now</string>
+    <string name="addAnswerStudent">Answer the question</string>
 </resources>
+

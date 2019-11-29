@@ -84,43 +84,63 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <projects_view />
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="TP2_Dev_Mobile" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
       </state>
     </system>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/bdeb/qc/ca/tp2_dev_mobile/LoginActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="26" column="81" lean-forward="true" selection-start-line="26" selection-start-column="81" selection-end-line="26" selection-end-column="81" />
+            <state relative-caret-position="892">
+              <caret line="60" column="5" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#985#1617#0" expanded="true" />
-                <element signature="e#1616#1617#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/bdeb/qc/ca/tp2_dev_mobile/AcceuilEtudiantActivity.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/bdeb/qc/ca/tp2_dev_mobile/QuestionEtudiantActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="30" column="20" lean-forward="true" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
+            <state relative-caret-position="240">
+              <caret line="73" column="5" lean-forward="true" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#673#720#0" expanded="true" />
+                <element signature="e#1234#1390#0" expanded="true" />
+                <element signature="e#1389#1390#0" expanded="true" />
+                <element signature="e#1249#1496#0" expanded="true" />
+                <element signature="e#1495#1496#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/res/layout/acceuil_etudiant_activity.xml">
+        <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_question_etudiant.xml">
           <provider editor-type-id="text-editor" />
           <provider selected="true" editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
+          <provider editor-type-id="android-manifest" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="29" column="60" lean-forward="true" selection-start-line="29" selection-start-column="60" selection-end-line="29" selection-end-column="60" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -144,24 +164,29 @@
         <option value="$PROJECT_DIR$/src/main/res/menu/menu.xml" />
         <option value="$PROJECT_DIR$/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/src/main/java/bdeb/qc/ca/tp2_dev_mobile/MainActivity.java" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/login_activity.xml" />
         <option value="$PROJECT_DIR$/src/main/res/menu/menu_acceuil.xml" />
         <option value="$PROJECT_DIR$/src/main/res/layout/acceuil_activity.xml" />
         <option value="$PROJECT_DIR$/src/main/java/bdeb/qc/ca/tp2_dev_mobile/AcceuilActiviyEtudiant.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/app_bar_main_activity_etudiant.xml" />
-        <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/main/java/bdeb/qc/ca/tp2_dev_mobile/MainActivityEtudiant.java" />
-        <option value="$PROJECT_DIR$/src/main/java/bdeb/qc/ca/tp2_dev_mobile/LoginActivity.java" />
         <option value="$PROJECT_DIR$/src/main/java/bdeb/qc/ca/tp2_dev_mobile/AcceuilActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/test_camera.xml" />
         <option value="$PROJECT_DIR$/src/main/java/bdeb/qc/ca/tp2_dev_mobile/AcceuilEtudiantActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/bdeb/qc/ca/tp2_dev_mobile/LoginActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/login_activity.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/camera_activity.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/bdeb/qc/ca/tp2_dev_mobile/CameraActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/bdeb/qc/ca/tp2_dev_mobile/QuestionEtudiantActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/activity_question_etudiant.xml" />
+        <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1999" />
-    <option name="y" value="-12" />
-    <option name="width" value="1932" />
-    <option name="height" value="1053" />
+    <option name="x" value="1912" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -169,6 +194,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
@@ -208,24 +235,29 @@
               <item name="TP2_Dev_Mobile" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="menu" type="ddeffd01:AndroidResFolderTypeNode" />
+              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="TP2_Dev_Mobile" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
+              <item name="strings" type="c431d0b8:AndroidResGroupNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="device.picker.selection" value="Pixel_2_XL_API_29" />
+    <property name="device.picker.selection" value="Nexus_4_API_29" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/TP1_Nick/Final_DevMobile/app" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+    <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -236,6 +268,9 @@
     </key>
     <key name="android.template.parentActivityClass">
       <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="bdeb.qc.ca.tp2_dev_mobile" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\1651560\Documents\GitHub\TP2_Dev_mobile\TP2_Dev_Mobile\app\src\main\res\layout" />
@@ -357,12 +392,12 @@
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.32936078" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="6" />
-      <window_info anchor="bottom" id="Build" order="7" weight="0.19068256" />
+      <window_info anchor="bottom" id="Build" order="7" visible="true" weight="0.19068256" />
       <window_info anchor="bottom" id="Android Profiler" order="8" />
       <window_info anchor="bottom" id="Find" order="9" weight="0.32936078" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="right" id="Gradle" order="2" />
+      <window_info anchor="right" id="Gradle" order="2" weight="0.32995737" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Preview" order="4" weight="0.32995737" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
@@ -370,14 +405,8 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/drawable/ic_launcher_background.xml">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="android-dummy://C:/Users/1651560/Documents/GitHub/TP2_Dev_mobile/TP2_Dev_Mobile/app/app/Translations Editor">
-      <provider selected="true" editor-type-id="string-resource-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/values/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -386,22 +415,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/nav_header_acceuil_activiy_etudiant.xml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/content_acceuil_activiy_etudiant.xml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_acceuil_activiy_etudiant.xml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/app_bar_acceuil_activiy_etudiant.xml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="android-designer2" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/nav_header_acceuil_activiy_etudiant.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/content_acceuil_activiy_etudiant.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_acceuil_activiy_etudiant.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/app_bar_acceuil_activiy_etudiant.xml" />
     <entry file="file://$PROJECT_DIR$/src/main/res/menu/menu_acceuil.xml">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -410,85 +427,96 @@
       </provider>
       <provider selected="true" editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bdeb/qc/ca/tp2_dev_mobile/AcceuilActiviyEtudiant.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/bdeb/qc/ca/tp2_dev_mobile/AcceuilActiviyEtudiant.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/content_main_activity_etudiant.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/res/menu/activity_main_etudiant_drawer.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/res/menu/main_activity_etudiant.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/app_bar_main_activity_etudiant.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/bdeb/qc/ca/tp2_dev_mobile/MainActivityEtudiant.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_main_etudiant.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_commentaire.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/bdeb/qc/ca/tp2_dev_mobile/Accueil_prof.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="68">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/content_main_activity_etudiant.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_accueil_prof.xml">
       <provider editor-type-id="text-editor" />
       <provider selected="true" editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/menu/activity_main_etudiant_drawer.xml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/menu/main_activity_etudiant.xml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/app_bar_main_activity_etudiant.xml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/login_activity.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="1734">
-          <caret line="102" column="13" selection-start-line="102" selection-start-column="13" selection-end-line="102" selection-end-column="13" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bdeb/qc/ca/tp2_dev_mobile/MainActivityEtudiant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="59" column="13" lean-forward="true" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_main_etudiant.xml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="11" lean-forward="true" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/test_camera.xml" />
     <entry file="file://$PROJECT_DIR$/src/main/res/layout/acceuil_etudiant_activity.xml">
       <provider editor-type-id="text-editor" />
       <provider selected="true" editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/bdeb/qc/ca/tp2_dev_mobile/AcceuilEtudiantActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="20" lean-forward="true" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
+        <state relative-caret-position="612">
+          <caret line="36" column="33" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#673#720#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/camera_activity.xml">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bdeb/qc/ca/tp2_dev_mobile/CameraActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="39" column="11" lean-forward="true" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="60" lean-forward="true" selection-start-line="29" selection-start-column="60" selection-end-line="29" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_question_etudiant.xml">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/bdeb/qc/ca/tp2_dev_mobile/LoginActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="26" column="81" lean-forward="true" selection-start-line="26" selection-start-column="81" selection-end-line="26" selection-end-column="81" />
+        <state relative-caret-position="892">
+          <caret line="60" column="5" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#985#1617#0" expanded="true" />
-            <element signature="e#1616#1617#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="android-dummy://C:/Users/1651560/Documents/GitHub/TP2_Dev_mobile/TP2_Dev_Mobile/app/app/Translations Editor">
+      <provider selected="true" editor-type-id="string-resource-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/login_activity.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="2210">
+          <caret line="130" column="51" selection-start-line="130" selection-start-column="51" selection-end-line="130" selection-end-column="51" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bdeb/qc/ca/tp2_dev_mobile/QuestionEtudiantActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="73" column="5" lean-forward="true" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
+          <folding>
+            <element signature="e#1234#1390#0" expanded="true" />
+            <element signature="e#1389#1390#0" expanded="true" />
+            <element signature="e#1249#1496#0" expanded="true" />
+            <element signature="e#1495#1496#0" expanded="true" />
           </folding>
         </state>
       </provider>

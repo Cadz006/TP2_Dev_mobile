@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/triAlpha"
-        android:title="Tri alphabétique"
+        android:title="@string/triAlphaEtudiants"
         app:showAsAction="never" />
     <item
         android:id="@+id/triActCompl"
-        android:title="Tri par activités complétées"
+        android:title="@string/triActivitesCompl"
         app:showAsAction="never" />
 </menu>
