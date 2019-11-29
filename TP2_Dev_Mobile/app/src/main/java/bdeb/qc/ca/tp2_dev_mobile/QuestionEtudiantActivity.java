@@ -3,6 +3,7 @@ package bdeb.qc.ca.tp2_dev_mobile;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -47,6 +48,12 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
                 startActivityForResult(intent, CHOISIR_IMAGE);
             }
         });
+    }
+
+    private void verifyPermissions(){
+        String[] permissions = {Manifest.permission.CAMERA};
+
+        
     }
 
     @Override
