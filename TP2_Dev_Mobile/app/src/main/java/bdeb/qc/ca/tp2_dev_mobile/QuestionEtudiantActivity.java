@@ -111,6 +111,7 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
             ivPhoto.setImageBitmap(bm);
         }
         else if(resultCode == RESULT_OK && requestCode == CHOISIR_IMAGE){
+
             imgUri = data.getData();
             ivPhoto.setImageURI(imgUri);
         }

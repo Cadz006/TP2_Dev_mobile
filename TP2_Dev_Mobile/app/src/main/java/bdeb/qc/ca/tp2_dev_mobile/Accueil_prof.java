@@ -16,6 +16,8 @@ import android.view.MenuItem;
 import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 import java.util.TreeSet;
@@ -59,9 +61,9 @@ public class Accueil_prof extends AppCompatActivity {
         Etudiant etudiant2 = new Etudiant("De La Barrière", "Guillaume", "mightguy@hotmail.ca", true, "", "");
         Etudiant etudiant3 = new Etudiant("Phalakhone", "Nick", "nick@hotmail.ca", true, "", "");
 
-        listEtudiant.add(etudiant1);
         listEtudiant.add(etudiant2);
         listEtudiant.add(etudiant3);
+        listEtudiant.add(etudiant1);
 
         recyclerView = findViewById(R.id.recyclerViewProf);
         recyclerView.setHasFixedSize(true);
@@ -106,11 +108,19 @@ public class Accueil_prof extends AppCompatActivity {
     }
 
     public void triAlpha(){
-        int i,j;
-        Collection<String> listNom = new TreeSet<>(Collator.getInstance());
-
-        for (Etudiant etudiant: listEtudiant) {
-            listNom.add(etudiant.getNom());
+        List<Etudiant> listEtudiantSorted = new ArrayList<>();
+        Collections.sort(listEtudiant, new Comparator<Etudiant>() {
+            @Override
+            public int compare(Etudiant etudiant1, Etudiant etudiant2) {
+                return etudiant1.getNom().compareTo(etudiant2.getNom());
+            }
+        });
+        for (Etudiant etudiant : listEtudiant){
+            listEtudiantSorted.add(etudiant);
+        }
+        listEtudiant = new ArrayList<>();
+        for (Etudiant etudiant : listEtudiantSorted){
+            listEtudiant.add(etudiant);
         }
 
     }
