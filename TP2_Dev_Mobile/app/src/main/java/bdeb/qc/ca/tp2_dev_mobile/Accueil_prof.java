@@ -13,15 +13,21 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import java.text.Collator;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Scanner;
+import java.util.TreeSet;
 
 public class Accueil_prof extends AppCompatActivity {
 
-    private ArrayList<Etudiant> listEtudiant;
-    private RecyclerView recyclerView;
-    private EtudiantAdapter adapter;
-    private RecyclerView.LayoutManager layoutManager;
-    public int positionEtudiant;
+    private ArrayList<Etudiant>             listEtudiant;
+    private RecyclerView                    recyclerView;
+    private EtudiantAdapter                 adapter;
+    private RecyclerView.LayoutManager      layoutManager;
+    private Etudiant                        etudiant;
+    public int                              positionEtudiant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,41 +35,46 @@ public class Accueil_prof extends AppCompatActivity {
         setContentView(R.layout.activity_accueil_prof);
         setup();
 
+
+
         adapter.setOnItemClickListener(new EtudiantAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                notifyItemSelected(position);
+                selectionEtudiant(position);
             }
         });
 
     }
 
     private void setup() {
-        Toolbar toolbar = findViewById(R.id.toolbarAcceuil);
-        toolbar.setTitle(getResources().getString(R.string.toolBarAccProf));
+        Toolbar toolbar = findViewById(R.id.toolbarAcceuilProf);
+        String str = getResources().getString(R.string.toolBarAccProf);
+        toolbar.setTitle(str);
         setSupportActionBar(toolbar);
+
+
+        listEtudiant = new ArrayList<>();
 
         Etudiant etudiant1 = new Etudiant("Cadieux", "Olivier", "ocadz@hotmail.ca", true, "", "");
         Etudiant etudiant2 = new Etudiant("De La Barrière", "Guillaume", "mightguy@hotmail.ca", true, "", "");
         Etudiant etudiant3 = new Etudiant("Phalakhone", "Nick", "nick@hotmail.ca", true, "", "");
 
-        listEtudiant = new ArrayList<>();
-
         listEtudiant.add(etudiant1);
         listEtudiant.add(etudiant2);
         listEtudiant.add(etudiant3);
 
-
-        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerViewProf);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         adapter = new EtudiantAdapter(listEtudiant);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(layoutManager);
     }
 
     public void selectionEtudiant(int position){
-        positionEtudiant = position;
-        Intent intent = new Intent(this,AcceuilEtudiantActivity.class);
         Etudiant etudiant = listEtudiant.get(position);
+        positionEtudiant = position;
+        Intent intent = new Intent(this, AcceuilEtudiantActivity.class);
         intent.putExtra("nom", etudiant.getNom());
         intent.putExtra("prenom", etudiant.getPrenom());
         startActivityForResult(intent, 2);
@@ -77,7 +88,7 @@ public class Accueil_prof extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu_acceuil, menu);
+        menuInflater.inflate(R.menu.menu_accueil_prof, menu);
         return true;
     }
 
@@ -85,12 +96,22 @@ public class Accueil_prof extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.triAlpha:
-                finish();
+                triAlpha();
                 break;
             case R.id.triActCompl:
                 finish();
                 break;
         }
         return true;
+    }
+
+    public void triAlpha(){
+        int i,j;
+        Collection<String> listNom = new TreeSet<>(Collator.getInstance());
+
+        for (Etudiant etudiant: listEtudiant) {
+            listNom.add(etudiant.getNom());
+        }
+
     }
 }

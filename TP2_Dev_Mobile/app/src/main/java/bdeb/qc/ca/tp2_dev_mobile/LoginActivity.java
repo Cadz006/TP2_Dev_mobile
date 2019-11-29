@@ -48,16 +48,20 @@ public class LoginActivity extends AppCompatActivity {
                 else if (etPassword.getText().toString().trim().isEmpty()) {
                     etPassword.setError(getResources().getString(R.string.errorLoginPassword));
                 }
-                else {
+                /*else {
                     Intent login = new Intent(LoginActivity.this, AcceuilEtudiantActivity.class);
                     startActivity(login);
-                }
-                /*else {
-                    Intent login = new Intent(LoginActivity.this, Accueil_prof.class);
-                    startActivity(login);
                 }*/
+                else {
+                    startIntent();
+                }
             }
         });
+    }
+
+    public void startIntent(){
+        Intent login = new Intent(this, Accueil_prof.class);
+        startActivity(login);
     }
 
     private void toolbarSetup() {
