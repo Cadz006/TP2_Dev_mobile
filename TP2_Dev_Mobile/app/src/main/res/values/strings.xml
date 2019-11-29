@@ -16,4 +16,5 @@
     <string name="email">E-mail</string>
     <string name="errorLoginEmail">Veuillez entrer votre courriel!</string>
     <string name="errorLoginPassword">Veuillez entrer votre mot de passe!</string>
+    <string name="QuestionEtudiant">La question de l étudiant</string>
 </resources>

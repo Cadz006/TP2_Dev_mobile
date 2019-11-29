@@ -52,6 +52,10 @@ public class LoginActivity extends AppCompatActivity {
                     Intent login = new Intent(LoginActivity.this, AcceuilEtudiantActivity.class);
                     startActivity(login);
                 }
+                /*else {
+                    Intent login = new Intent(LoginActivity.this, Accueil_prof.class);
+                    startActivity(login);
+                }*/
             }
         });
     }
