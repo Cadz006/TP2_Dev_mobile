@@ -53,7 +53,7 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
     private void verifyPermissions(){
         String[] permissions = {Manifest.permission.CAMERA};
 
-        
+
     }
 
     @Override
