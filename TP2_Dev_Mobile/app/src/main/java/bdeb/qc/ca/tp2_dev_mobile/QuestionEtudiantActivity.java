@@ -3,17 +3,19 @@ package bdeb.qc.ca.tp2_dev_mobile;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -23,6 +25,7 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
     public static final int CHOISIR_IMAGE = 1;
     public static final int PRENDRE_PHOTO = 0;
     ImageView ivPhoto;
+    ImageView ivCommentaireAudio;
     Uri imgUri;
 
     @Override
@@ -31,9 +34,31 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
         setContentView(R.layout.activity_question_etudiant);
 
         ivPhoto = findViewById(R.id.ivPhoto);
+        ivCommentaireAudio = findViewById(R.id.fabEcouterCommentaire);
+        ivCommentaireAudio.setEnabled(false);
         btnCameraListener();
+        setToolbar();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_acceuil, menu);
+        return true;
+    }
+
+    private void setToolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbarQuestionEtudiant);
+        toolbar.setTitle("Question");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
     private void btnCameraListener() {
         FloatingActionButton fabCamera = findViewById(R.id.fabCamera);
         FloatingActionButton fabGallery = findViewById(R.id.fabGallery);

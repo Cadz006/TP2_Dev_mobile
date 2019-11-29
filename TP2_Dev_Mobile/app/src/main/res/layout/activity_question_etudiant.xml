@@ -33,16 +33,16 @@
         app:srcCompat="@drawable/ic_menu_camera" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabCamera3"
+        android:id="@+id/fabEcouterCommentaire"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="36dp"
         android:clickable="true"
-        app:backgroundTint="@color/colorPrimary"
+        app:backgroundTint="#979B97"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fabCamera"
-        app:srcCompat="@drawable/ic_menu_camera" />
+        app:srcCompat="@drawable/ic_play_arrow" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabReponseAudio"
@@ -50,14 +50,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="24dp"
-        android:clickable="true"
+        android:longClickable="false"
         app:backgroundTint="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtQuestionEtudiant"
         app:srcCompat="@drawable/ic_mic" />
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbarQuestionEtudiant"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
@@ -78,7 +78,7 @@
         android:text="@string/QuestionEtudiant"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbarQuestionEtudiant" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabGallery"
@@ -117,7 +117,7 @@
         android:text="@string/noComment"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/fabCamera3"
-        app:layout_constraintTop_toTopOf="@+id/fabCamera3" />
+        app:layout_constraintStart_toEndOf="@+id/fabEcouterCommentaire"
+        app:layout_constraintTop_toTopOf="@+id/fabEcouterCommentaire" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
