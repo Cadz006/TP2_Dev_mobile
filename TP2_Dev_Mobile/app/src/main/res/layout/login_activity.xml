@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:background="#FF9800"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="0dp">
+        tools:layout_editor_absoluteY="0dp"/>
 
     <TextView
         android:id="@+id/textView"
@@ -30,8 +30,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/etxtEmail"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivIcon" />
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <EditText
         android:id="@+id/etxtEmail"
@@ -49,8 +48,7 @@
         app:layout_constraintBottom_toTopOf="@+id/etxtPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />@+id/etxtUsername" />
-
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
     <EditText
         android:id="@+id/etxtPassword"
         android:layout_width="wrap_content"
