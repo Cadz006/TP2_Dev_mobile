@@ -7,11 +7,10 @@
     tools:context=".Activities.QuestionListActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/questions_recyclerView"
         android:layout_width="0dp"
         android:layout_height="335dp"
-        tools:layout_editor_absoluteX="153dp"
-        tools:layout_editor_absoluteY="108dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

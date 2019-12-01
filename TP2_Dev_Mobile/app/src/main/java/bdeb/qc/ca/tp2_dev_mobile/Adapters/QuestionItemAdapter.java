@@ -16,6 +16,8 @@ import bdeb.qc.ca.tp2_dev_mobile.R;
 public class QuestionItemAdapter extends RecyclerView.Adapter<QuestionItemAdapter.QuestionItemViewHolder>
 {
     private ArrayList<QuestionListItem> questions;
+    private OnItemClickListener listener;
+
     @NonNull
     @Override
     public QuestionItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
@@ -24,7 +26,12 @@ public class QuestionItemAdapter extends RecyclerView.Adapter<QuestionItemAdapte
                                .inflate(R.layout.questions_recycler_view_item,
                                         parent,
                                         false);
-        return new QuestionItemViewHolder(v);
+        return new QuestionItemViewHolder(v, listener);
+    }
+
+    public void setListener(OnItemClickListener listener)
+    {
+        this.listener = listener;
     }
 
     @Override
@@ -48,10 +55,31 @@ public class QuestionItemAdapter extends RecyclerView.Adapter<QuestionItemAdapte
     public static class QuestionItemViewHolder extends RecyclerView.ViewHolder
     {
         public TextView question;
-        public QuestionItemViewHolder(@NonNull View itemView)
+        public QuestionItemViewHolder(@NonNull View itemView, final OnItemClickListener listener)
         {
             super(itemView);
             question = itemView.findViewById(R.id.questions_tvTitle);
+            setListener(itemView, listener);
         }
+
+        private void setListener(View itemView, final OnItemClickListener listener)
+        {
+            itemView.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View view)
+                {
+                    if (listener == null) return;
+                    int pos = getAdapterPosition();
+                    if (pos == RecyclerView.NO_POSITION) return;
+                    listener.onItemClick(pos);
+                }
+            });
+        }
+    }
+
+    public interface OnItemClickListener
+    {
+        void onItemClick(int pos);
     }
 }
