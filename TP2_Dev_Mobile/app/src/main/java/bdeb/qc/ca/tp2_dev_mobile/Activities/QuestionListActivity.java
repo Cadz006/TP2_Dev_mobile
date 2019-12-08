@@ -1,11 +1,14 @@
 package bdeb.qc.ca.tp2_dev_mobile.Activities;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
 
 import java.util.ArrayList;
 
@@ -16,16 +19,39 @@ import bdeb.qc.ca.tp2_dev_mobile.R;
 public class QuestionListActivity extends AppCompatActivity
 {
     private ArrayList<QuestionListItem> questions;
+    private String metierLetter;
     private QuestionItemAdapter adapter;
+
+    public static final String KEY_QUESTION = "bdeb.qc.ca.tp2_dev_mobile.QuestionListActivity.KEY_QUESTION";
+    public static final int EDIT_QUESTION_CODE = 477571294;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
-        addSampleQuestions();
+        createToolbar();
+        //questions = getIntent().getParcelableExtra( );
+        //metierLetter = getIntent().getStringExtra( );
         createRecyclerView();
         addListenerToAdapter();
+    }
+
+    private void createToolbar()
+    {
+        Toolbar t = findViewById(R.id.questions_toolbar);
+        setSupportActionBar(t);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle(metierLetter);
+        t.setNavigationOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                finish();
+            }
+        });
     }
 
     private void addListenerToAdapter()
@@ -35,7 +61,10 @@ public class QuestionListActivity extends AppCompatActivity
             @Override
             public void onItemClick(int pos)
             {
-                // todo start guillaume's app
+                QuestionListItem question = questions.get(pos);
+                Intent intent = new Intent(/*guillaume's class*/);
+                intent.putExtra(KEY_QUESTION, question);
+                startActivityForResult(intent, EDIT_QUESTION_CODE);
             }
         });
     }
@@ -50,13 +79,10 @@ public class QuestionListActivity extends AppCompatActivity
         recyclerView.setAdapter(adapter);
     }
 
-    private void addSampleQuestions()
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
     {
-        questions = new ArrayList<>();
-        questions.add(new QuestionListItem("a sjhhjsa"));
-        questions.add(new QuestionListItem("ddsSDDSSDhdeadasdsdssdjsa"));
-        questions.add(new QuestionListItem("a sjdhhjsa"));
-        questions.add(new QuestionListItem("a sjhahjsa"));
-        questions.add(new QuestionListItem("a sjhsdshjsa"));
+        super.onActivityResult(requestCode, resultCode, data);
+        // receive data from guillaume's class
     }
 }
