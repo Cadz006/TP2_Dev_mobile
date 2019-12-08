@@ -21,23 +21,28 @@ import android.widget.ImageView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import bdeb.qc.ca.tp2_dev_mobile.Model.QuestionListItem;
 import bdeb.qc.ca.tp2_dev_mobile.R;
 
-public class QuestionEtudiantActivity extends AppCompatActivity {
+public class QuestionEtudiantActivity extends AppCompatActivity
+{
     public static final int CHOISIR_IMAGE = 1;
     public static final int PRENDRE_PHOTO = 0;
-    ImageView ivPhoto;
-    ImageView ivCommentaireAudio;
-    Uri imgUri;
+    private QuestionListItem question;
+    private ImageView ivPhoto;
+    private ImageView ivCommentaireAudio;
+    private Uri imgUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_etudiant);
 
+        question = getIntent().getParcelableExtra(QuestionListActivity.KEY_QUESTION);
         ivPhoto = findViewById(R.id.ivPhoto);
         ivCommentaireAudio = findViewById(R.id.fabEcouterCommentaire);
         ivCommentaireAudio.setEnabled(false);
+
         btnCameraListener();
         setToolbar();
     }
@@ -51,7 +56,7 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
 
     private void setToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbarQuestionEtudiant);
-        toolbar.setTitle("Question");
+        toolbar.setTitle(question.getQuestion());
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

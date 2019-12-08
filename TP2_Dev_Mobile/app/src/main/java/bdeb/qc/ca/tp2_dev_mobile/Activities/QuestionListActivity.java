@@ -21,7 +21,7 @@ public class QuestionListActivity extends AppCompatActivity
     private QuestionItemAdapter adapter;
 
     public static final String KEY_QUESTION = "bdeb.qc.ca.tp2_dev_mobile.QuestionListActivity.KEY_QUESTION";
-    public static final int EDIT_QUESTION_CODE = 71294;
+    public static final int EDIT_QUESTION_CODE = 794;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -59,7 +59,7 @@ public class QuestionListActivity extends AppCompatActivity
             public void onItemClick(int pos)
             {
                 QuestionListItem question = metier.getQuestions().get(pos);
-                Intent intent = new Intent(/*guillaume's class*/);
+                Intent intent = new Intent(QuestionListActivity.this, QuestionEtudiantActivity.class);
                 intent.putExtra(KEY_QUESTION, question);
                 startActivityForResult(intent, EDIT_QUESTION_CODE);
             }
