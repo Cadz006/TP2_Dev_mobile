@@ -21,7 +21,6 @@ import bdeb.qc.ca.tp2_dev_mobile.R;
 public class QuestionListActivity extends AppCompatActivity
 {
     private Metier metier;
-    private String metierLetter;
     private QuestionItemAdapter adapter;
 
     public static final String KEY_QUESTION = "bdeb.qc.ca.tp2_dev_mobile.QuestionListActivity.KEY_QUESTION";
@@ -32,9 +31,8 @@ public class QuestionListActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
-        createToolbar();
         metier = getIntent().getParcelableExtra(AcceuilEtudiantActivity.KEY_METIER);
-        //metierLetter = getIntent().getStringExtra( );
+        createToolbar();
         createRecyclerView();
         addListenerToAdapter();
     }
@@ -45,7 +43,7 @@ public class QuestionListActivity extends AppCompatActivity
         setSupportActionBar(t);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle(metierLetter);
+        getSupportActionBar().setTitle(metier.getMetierLetter());
         t.setNavigationOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -76,7 +74,7 @@ public class QuestionListActivity extends AppCompatActivity
         RecyclerView recyclerView = findViewById(R.id.questions_recyclerView);
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager manager = new LinearLayoutManager(this);
-        adapter = new QuestionItemAdapter(questions);
+        adapter = new QuestionItemAdapter(metier.getQuestions());
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(adapter);
     }
