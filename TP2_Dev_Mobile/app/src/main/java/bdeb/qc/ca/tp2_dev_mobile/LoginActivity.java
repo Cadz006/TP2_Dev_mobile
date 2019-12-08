@@ -17,8 +17,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
-        etxtEmail = findViewById(R.id.etxtEmail);
-        etxtPassword = findViewById(R.id.etxtPassword);
+        etxtEmail = findViewById(R.id.login_etxtEmail);
+        etxtPassword = findViewById(R.id.login_etxtPassword);
 
         toolbarSetup();
         btnLoginListener(etxtEmail, etxtPassword);
@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void btnGoogleListener() {
-        Button btnGoogle = findViewById(R.id.btnLoginGoogle);
+        Button btnGoogle = findViewById(R.id.login_btnLoginGoogle);
 
         btnGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void btnLoginListener(final EditText etEmail, final EditText etPassword) {
-        Button btnLogin = findViewById(R.id.btnLogin);
+        Button btnLogin = findViewById(R.id.login_btnLogin);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void toolbarSetup() {
-        Toolbar toolbar = findViewById(R.id.toolbarAcceuil);
+        Toolbar toolbar = findViewById(R.id.login_toolbar);
         toolbar.setTitle(getResources().getString(R.string.toolbarTitle));
         setSupportActionBar(toolbar);
     }
