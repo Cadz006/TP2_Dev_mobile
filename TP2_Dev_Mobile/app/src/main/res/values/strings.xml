@@ -1,23 +1,23 @@
 <resources>
     <string name="app_name">TP2_Dev_Mobile</string>
-    <string name="appName">DÈfi Photo</string>
-    <string name="hintEmail">Entrez votre Èmail</string>
+    <string name="appName">D√©fi Photo</string>
+    <string name="hintEmail">Entrez votre e-mail</string>
     <string name="hintPassword">Entrez votre mot de passe</string>
     <string name="btnLogin">Connexion</string>
     <string name="toolbarTitle">Bois-de-Boulogne</string>
     <string name="btnGoogle">Connexion par Google</string>
     <string name="toolBarAccProf">Menu d"'accueil pour enseignant</string>
-    <string name="readCommentText">Lire un commentaire Ècrit</string>
-    <string name="listenCommentAudio">…couter un commentaire audio</string>
-    <string name="triAlphaEtudiants">Tri alphabÈtique</string>
-    <string name="triActivitesCompl">Tri par activitÈs complÈtÈes</string>
+    <string name="readCommentText">Lire un commentaire ecrit</string>
+    <string name="listenCommentAudio">Ecouter un commentaire audio</string>
+    <string name="triAlphaEtudiants">Tri alphab√©tique</string>
+    <string name="triActivitesCompl">Tri par activit√©s compl√©t√©es</string>
     <string name="nomFamille">Nom de famille</string>
-    <string name="prenom">Prenom</string>
+    <string name="prenom">Pr√©nom</string>
     <string name="email">E-mail</string>
     <string name="estActif">Actif</string>
-    <string name="errorLoginEmail">Veuillez entrer votre courriel!</string>
+    <string name="errorLoginEmail">Veuillez entrer votre e-mail!</string>
     <string name="errorLoginPassword">Veuillez entrer votre mot de passe!</string>
-    <string name="QuestionEtudiant">La question de l Ètudiant</string>
+    <string name="QuestionEtudiant">La question de l"'√©tudiant</string>
     <string name="noComment">Aucun commentaire pour l\'instant</string>
-    <string name="addAnswerStudent">RÈpondre ‡ la question</string>
+    <string name="addAnswerStudent">R√©pondre √† la question</string>
 </resources>

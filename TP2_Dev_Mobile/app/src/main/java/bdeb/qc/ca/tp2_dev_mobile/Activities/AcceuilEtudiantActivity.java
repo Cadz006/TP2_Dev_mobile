@@ -26,7 +26,6 @@ public class AcceuilEtudiantActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
 
     public static final String KEY_METIER = "bdeb.qc.ca.tp2_dev_mobile.AcceuilEtudiantActivity.KEY_QUESTIONS";
-    public static final int EDIT_QUESTIONS_CODE = 46346;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +62,7 @@ public class AcceuilEtudiantActivity extends AppCompatActivity {
     public void openActivityMetierLetter(int position) {
         Intent intent = new Intent(this, QuestionListActivity.class);
         intent.putExtra(KEY_METIER, metierList.get(position));
-        startActivityForResult(intent, EDIT_QUESTIONS_CODE);
+        startActivity(intent);
     }
 
     private void toolbarSetup() {

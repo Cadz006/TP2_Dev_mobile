@@ -48,7 +48,7 @@
         android:layout_alignParentEnd="true"
         android:ems="10"
         android:hint="@string/hintEmail"
-        android:inputType="text"
+        android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/login_etxtPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

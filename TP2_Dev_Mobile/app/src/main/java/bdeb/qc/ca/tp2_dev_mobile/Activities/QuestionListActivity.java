@@ -61,7 +61,7 @@ public class QuestionListActivity extends AppCompatActivity
                 QuestionListItem question = metier.getQuestions().get(pos);
                 Intent intent = new Intent(QuestionListActivity.this, QuestionEtudiantActivity.class);
                 intent.putExtra(KEY_QUESTION, question);
-                startActivityForResult(intent, EDIT_QUESTION_CODE);
+                startActivity(intent);
             }
         });
     }
@@ -74,12 +74,5 @@ public class QuestionListActivity extends AppCompatActivity
         adapter = new QuestionItemAdapter(metier.getQuestions());
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(adapter);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
-    {
-        super.onActivityResult(requestCode, resultCode, data);
-        // receive data from guillaume's class
     }
 }
