@@ -45,13 +45,9 @@ public class LoginActivity extends AppCompatActivity {
                 if (etEmail.getText().toString().trim().isEmpty()) {
                     etEmail.setError(getResources().getString(R.string.errorLoginEmail));
                 }
-                else if (etPassword.getText().toString().trim().isEmpty()) {
+                if (etPassword.getText().toString().trim().isEmpty()) {
                     etPassword.setError(getResources().getString(R.string.errorLoginPassword));
                 }
-                /*else {
-                    Intent login = new Intent(LoginActivity.this, AcceuilEtudiantActivity.class);
-                    startActivity(login);
-                }*/
                 else {
                     Intent login = null;
                     if(etxtEmail.getText().toString().equals("prof"))
@@ -61,15 +57,10 @@ public class LoginActivity extends AppCompatActivity {
                     {
                         login = new Intent(LoginActivity.this, AcceuilEtudiantActivity.class);
                     }
-                    startIntent(login);
+                    startActivity(login);
                 }
             }
         });
-    }
-
-    public void startIntent(){
-        Intent login = new Intent(this, AcceuilEtudiantActivity.class);
-        startActivity(login);
     }
 
     private void toolbarSetup() {
