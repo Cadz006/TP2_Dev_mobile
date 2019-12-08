@@ -12,18 +12,20 @@ import android.view.View;
 
 import java.util.ArrayList;
 
+import bdeb.qc.ca.tp2_dev_mobile.AcceuilEtudiantActivity;
 import bdeb.qc.ca.tp2_dev_mobile.Adapters.QuestionItemAdapter;
+import bdeb.qc.ca.tp2_dev_mobile.Metier;
 import bdeb.qc.ca.tp2_dev_mobile.Model.QuestionListItem;
 import bdeb.qc.ca.tp2_dev_mobile.R;
 
 public class QuestionListActivity extends AppCompatActivity
 {
-    private ArrayList<QuestionListItem> questions;
+    private Metier metier;
     private String metierLetter;
     private QuestionItemAdapter adapter;
 
     public static final String KEY_QUESTION = "bdeb.qc.ca.tp2_dev_mobile.QuestionListActivity.KEY_QUESTION";
-    public static final int EDIT_QUESTION_CODE = 477571294;
+    public static final int EDIT_QUESTION_CODE = 71294;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -31,7 +33,7 @@ public class QuestionListActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
         createToolbar();
-        //questions = getIntent().getParcelableExtra( );
+        metier = getIntent().getParcelableExtra(AcceuilEtudiantActivity.KEY_METIER);
         //metierLetter = getIntent().getStringExtra( );
         createRecyclerView();
         addListenerToAdapter();
@@ -61,7 +63,7 @@ public class QuestionListActivity extends AppCompatActivity
             @Override
             public void onItemClick(int pos)
             {
-                QuestionListItem question = questions.get(pos);
+                QuestionListItem question = metier.getQuestions().get(pos);
                 Intent intent = new Intent(/*guillaume's class*/);
                 intent.putExtra(KEY_QUESTION, question);
                 startActivityForResult(intent, EDIT_QUESTION_CODE);
