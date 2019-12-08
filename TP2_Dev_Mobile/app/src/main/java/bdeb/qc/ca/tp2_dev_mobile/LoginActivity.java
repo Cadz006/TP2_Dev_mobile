@@ -53,14 +53,21 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(login);
                 }*/
                 else {
-                    startIntent();
+                    Intent login = null;
+                    if(etxtEmail.getText().toString().equals("prof"))
+                    {
+                        login = new Intent(LoginActivity.this, Accueil_prof.class);
+                    } else
+                    {
+                        login = new Intent(LoginActivity.this, AcceuilEtudiantActivity.class);
+                    }
+                    startIntent(login);
                 }
             }
         });
     }
 
-    public void startIntent(){
-        Intent login = new Intent(this, Accueil_prof.class);
+    public void startIntent(Intent login){
         startActivity(login);
     }
 
