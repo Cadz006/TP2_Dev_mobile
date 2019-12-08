@@ -67,7 +67,8 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public void startIntent(Intent login){
+    public void startIntent(){
+        Intent login = new Intent(this, AcceuilEtudiantActivity.class);
         startActivity(login);
     }
 

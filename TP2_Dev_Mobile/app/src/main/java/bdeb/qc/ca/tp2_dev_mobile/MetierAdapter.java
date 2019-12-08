@@ -32,6 +32,22 @@ public class MetierAdapter extends RecyclerView.Adapter<MetierAdapter.MetierView
 
             tvMetierLetter = metierView.findViewById(R.id.tvMetierLetter);
             pbProgress = metierView.findViewById(R.id.pbProgress);
+            setListener(itemView, listener);
+        }
+
+        private void setListener(View itemView, final OnItemClickListener listener)
+        {
+            itemView.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View view)
+                {
+                    if (listener == null) return;
+                    int pos = getAdapterPosition();
+                    if (pos == RecyclerView.NO_POSITION) return;
+                    listener.onItemClick(pos);
+                }
+            });
         }
     }
 
@@ -40,9 +56,8 @@ public class MetierAdapter extends RecyclerView.Adapter<MetierAdapter.MetierView
     @NonNull
     @Override
     public MetierViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_metier_progress, parent, false);
-        MetierViewHolder mvh = new MetierViewHolder(v, listener);
-        return mvh;
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_metier_progress, parent, false);
+        return new MetierViewHolder(v, listener);
     }
 
     @Override
