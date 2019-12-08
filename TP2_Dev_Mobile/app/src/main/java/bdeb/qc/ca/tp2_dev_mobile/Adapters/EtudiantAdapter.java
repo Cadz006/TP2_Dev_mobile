@@ -1,17 +1,17 @@
-package bdeb.qc.ca.tp2_dev_mobile;
+package bdeb.qc.ca.tp2_dev_mobile.Adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
+
+import bdeb.qc.ca.tp2_dev_mobile.Model.Etudiant;
+import bdeb.qc.ca.tp2_dev_mobile.R;
 
 public class EtudiantAdapter extends RecyclerView.Adapter<EtudiantAdapter.EtudiantViewHolder> {
 

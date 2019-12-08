@@ -1,4 +1,4 @@
-package bdeb.qc.ca.tp2_dev_mobile;
+package bdeb.qc.ca.tp2_dev_mobile.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,6 +20,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import bdeb.qc.ca.tp2_dev_mobile.R;
 
 public class QuestionEtudiantActivity extends AppCompatActivity {
     public static final int CHOISIR_IMAGE = 1;

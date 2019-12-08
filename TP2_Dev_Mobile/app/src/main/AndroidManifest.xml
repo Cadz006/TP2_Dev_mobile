@@ -19,15 +19,15 @@
         <activity android:name=".Activities.QuestionListActivity">
 
         </activity>
-        <activity android:name=".Accueil_prof"/>
-        <activity android:name=".LoginActivity">
+        <activity android:name=".Activities.AccueilProfActivity"/>
+        <activity android:name=".Activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".QuestionEtudiantActivity"/>
-        <activity android:name=".AcceuilEtudiantActivity" />
+        <activity android:name=".Activities.QuestionEtudiantActivity"/>
+        <activity android:name=".Activities.AcceuilEtudiantActivity" />
     </application>
 </manifest>

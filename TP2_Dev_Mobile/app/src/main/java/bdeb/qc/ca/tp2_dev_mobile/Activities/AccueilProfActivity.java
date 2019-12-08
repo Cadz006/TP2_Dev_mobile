@@ -1,4 +1,4 @@
-package bdeb.qc.ca.tp2_dev_mobile;
+package bdeb.qc.ca.tp2_dev_mobile.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,20 +13,20 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import java.text.Collator;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Scanner;
-import java.util.TreeSet;
 
-public class Accueil_prof extends AppCompatActivity {
+import bdeb.qc.ca.tp2_dev_mobile.Model.Etudiant;
+import bdeb.qc.ca.tp2_dev_mobile.Adapters.EtudiantAdapter;
+import bdeb.qc.ca.tp2_dev_mobile.R;
+
+public class AccueilProfActivity extends AppCompatActivity {
 
     private ArrayList<Etudiant>             listEtudiant;
     private RecyclerView                    recyclerView;
-    private EtudiantAdapter                 adapter;
+    private EtudiantAdapter adapter;
     private RecyclerView.LayoutManager      layoutManager;
     private Etudiant                        etudiant;
     public int                              positionEtudiant;

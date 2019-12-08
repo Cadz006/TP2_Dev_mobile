@@ -1,4 +1,4 @@
-package bdeb.qc.ca.tp2_dev_mobile;
+package bdeb.qc.ca.tp2_dev_mobile.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import bdeb.qc.ca.tp2_dev_mobile.R;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText etxtEmail;
@@ -52,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
                     Intent login = null;
                     if(etxtEmail.getText().toString().equals("prof"))
                     {
-                        login = new Intent(LoginActivity.this, Accueil_prof.class);
+                        login = new Intent(LoginActivity.this, AccueilProfActivity.class);
                     } else
                     {
                         login = new Intent(LoginActivity.this, AcceuilEtudiantActivity.class);

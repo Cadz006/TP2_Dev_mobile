@@ -1,4 +1,6 @@
-package bdeb.qc.ca.tp2_dev_mobile;
+package bdeb.qc.ca.tp2_dev_mobile.Model;
+
+import bdeb.qc.ca.tp2_dev_mobile.Model.Etudiant;
 
 public class RV_enseignant {
 

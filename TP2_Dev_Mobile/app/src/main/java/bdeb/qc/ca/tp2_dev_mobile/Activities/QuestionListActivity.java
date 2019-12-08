@@ -10,11 +10,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import java.util.ArrayList;
-
-import bdeb.qc.ca.tp2_dev_mobile.AcceuilEtudiantActivity;
 import bdeb.qc.ca.tp2_dev_mobile.Adapters.QuestionItemAdapter;
-import bdeb.qc.ca.tp2_dev_mobile.Metier;
+import bdeb.qc.ca.tp2_dev_mobile.Model.Metier;
 import bdeb.qc.ca.tp2_dev_mobile.Model.QuestionListItem;
 import bdeb.qc.ca.tp2_dev_mobile.R;
 

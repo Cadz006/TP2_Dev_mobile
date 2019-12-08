@@ -1,12 +1,9 @@
-package bdeb.qc.ca.tp2_dev_mobile;
+package bdeb.qc.ca.tp2_dev_mobile.Model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.widget.ProgressBar;
 
 import java.util.ArrayList;
-
-import bdeb.qc.ca.tp2_dev_mobile.Model.QuestionListItem;
 
 public class Metier implements Parcelable
 {

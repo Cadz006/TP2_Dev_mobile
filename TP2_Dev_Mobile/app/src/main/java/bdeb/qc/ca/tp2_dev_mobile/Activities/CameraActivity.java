@@ -1,4 +1,4 @@
-package bdeb.qc.ca.tp2_dev_mobile;
+package bdeb.qc.ca.tp2_dev_mobile.Activities;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import bdeb.qc.ca.tp2_dev_mobile.R;
 
 public class CameraActivity extends AppCompatActivity {
     ImageView ivPhoto;

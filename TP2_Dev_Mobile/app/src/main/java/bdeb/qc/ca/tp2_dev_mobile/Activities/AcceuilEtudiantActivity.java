@@ -1,4 +1,4 @@
-package bdeb.qc.ca.tp2_dev_mobile;
+package bdeb.qc.ca.tp2_dev_mobile.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import bdeb.qc.ca.tp2_dev_mobile.Activities.QuestionListActivity;
+import bdeb.qc.ca.tp2_dev_mobile.Model.Metier;
+import bdeb.qc.ca.tp2_dev_mobile.Adapters.MetierAdapter;
+import bdeb.qc.ca.tp2_dev_mobile.R;
 
 public class AcceuilEtudiantActivity extends AppCompatActivity {
 
