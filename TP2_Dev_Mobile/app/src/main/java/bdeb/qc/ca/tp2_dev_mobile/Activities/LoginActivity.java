@@ -57,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
                         login = new Intent(LoginActivity.this, AccueilProfActivity.class);
                     }else if(etxtEmail.getText().toString().equals("admin"))
                     {
-                        login = new Intent(LoginActivity.this, AcceuilAdminActivity.class);
+                        login = new Intent(LoginActivity.this, AccueilAdminActivity.class);
                     } else
                     {
                         login = new Intent(LoginActivity.this, AcceuilEtudiantActivity.class);

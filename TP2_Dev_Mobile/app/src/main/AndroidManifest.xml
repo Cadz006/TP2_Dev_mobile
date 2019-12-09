@@ -17,7 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.AcceuilAdminActivity"></activity>
+        <activity android:name=".Activities.AccueilAdminActivity"></activity>
         <activity android:name=".Activities.QuestionListActivity"></activity>
         <activity android:name=".Activities.AccueilProfActivity" />
         <activity android:name=".Activities.LoginActivity">
@@ -29,6 +29,8 @@
         </activity>
         <activity android:name=".Activities.QuestionEtudiantActivity" />
         <activity android:name=".Activities.AcceuilEtudiantActivity" />
+        <activity android:name=".Activities.AjouterEnseignant" />
+        <activity android:name=".Activities.AjouterEtudiant" />
     </application>
 
 </manifest>
