@@ -17,7 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.activity_accueil_admin"></activity>
+        <activity android:name=".Activities.AcceuilAdminActivity"></activity>
         <activity android:name=".Activities.QuestionListActivity"></activity>
         <activity android:name=".Activities.AccueilProfActivity" />
         <activity android:name=".Activities.LoginActivity">

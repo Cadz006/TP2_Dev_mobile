@@ -1,16 +1,18 @@
 package bdeb.qc.ca.tp2_dev_mobile.Activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 import bdeb.qc.ca.tp2_dev_mobile.R;
 
-public class activity_accueil_admin extends AppCompatActivity {
+public class AcceuilAdminActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +37,12 @@ public class activity_accueil_admin extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu_accueil_prof, menu);
+        menuInflater.inflate(R.menu.menu_acceuil, menu);
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
 }
