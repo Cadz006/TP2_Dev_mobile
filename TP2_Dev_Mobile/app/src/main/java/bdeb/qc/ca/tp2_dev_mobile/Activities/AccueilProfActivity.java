@@ -24,66 +24,78 @@ import bdeb.qc.ca.tp2_dev_mobile.R;
 
 public class AccueilProfActivity extends AppCompatActivity {
 
-    private ArrayList<Etudiant>             listEtudiant;
-    private RecyclerView                    recyclerView;
+    private ArrayList<Etudiant> listEtudiant;
     private EtudiantAdapter adapter;
-    private RecyclerView.LayoutManager      layoutManager;
-    private Etudiant                        etudiant;
-    public int                              positionEtudiant;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accueil_prof);
-        setup();
+        setupToolbar();
+        addSampleDataToListEtudiant();
+        createRecyclerView();
+        addListenerToAdapter();
+    }
 
+    /**
+     * Cette méthode initialise les propriétés de la toolbar.
+     */
+    private void setupToolbar()
+    {
+        Toolbar toolbar = findViewById(R.id.toolbarAcceuilProf);
+        toolbar.setTitle(getResources().getString(R.string.toolBarAccProf));
+        setSupportActionBar(toolbar);
+    }
 
+    /**
+     * Cette méthode ajoute des données dans la liste d'étudiants.
+     * Pour l'instant, elle sert parce que nous n'arrivons pas à avoir accès à l'API.
+     */
+    private void addSampleDataToListEtudiant()
+    {
+        listEtudiant = new ArrayList<>();
+        listEtudiant.add(new Etudiant("Cadieux", "Olivier", "ocadz@hotmail.ca", true, "", ""));
+        listEtudiant.add(new Etudiant("De La Barrière", "Guillaume", "mightguy@hotmail.ca", true, "", ""));
+        listEtudiant.add(new Etudiant("Phalakhone", "Nick", "nick@hotmail.ca", true, "", ""));
+    }
 
+    /**
+     * Cette méthode initialise les propriétés du recycler view et du adapter.
+     */
+    private void createRecyclerView()
+    {
+        RecyclerView recyclerView = findViewById(R.id.recyclerViewProf);
+        recyclerView.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        adapter = new EtudiantAdapter(listEtudiant);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(layoutManager);
+    }
+
+    /**
+     * Cette méthode ajoute un événement au adapteur.
+     * L'événement de l'étudiant démarre l'intent de l'étudiant (avec les 6 mots de METIER),
+     * mais pour le professeur.
+     */
+    private void addListenerToAdapter()
+    {
         adapter.setOnItemClickListener(new EtudiantAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
                 selectionEtudiant(position);
             }
         });
-
     }
 
-    private void setup() {
-        Toolbar toolbar = findViewById(R.id.toolbarAcceuilProf);
-        String str = getResources().getString(R.string.toolBarAccProf);
-        toolbar.setTitle(str);
-        setSupportActionBar(toolbar);
-
-
-        listEtudiant = new ArrayList<>();
-
-        Etudiant etudiant1 = new Etudiant("Cadieux", "Olivier", "ocadz@hotmail.ca", true, "", "");
-        Etudiant etudiant2 = new Etudiant("De La Barrière", "Guillaume", "mightguy@hotmail.ca", true, "", "");
-        Etudiant etudiant3 = new Etudiant("Phalakhone", "Nick", "nick@hotmail.ca", true, "", "");
-
-        listEtudiant.add(etudiant2);
-        listEtudiant.add(etudiant3);
-        listEtudiant.add(etudiant1);
-
-        recyclerView = findViewById(R.id.recyclerViewProf);
-        recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        adapter = new EtudiantAdapter(listEtudiant);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(layoutManager);
-    }
-
+    /**
+     * Cette méthode est appelée lorsque l'utilisateur clique sur un étudiant.
+     * @param position La position de l'étudiant dans la liste.
+     */
     public void selectionEtudiant(int position){
-        Etudiant etudiant = listEtudiant.get(position);
-        positionEtudiant = position;
         Intent intent = new Intent(this, AcceuilEtudiantActivity.class);
         intent.putExtra("IsProf", true);
         startActivityForResult(intent, 2);
-    }
-
-    public void notifyItemSelected(int position) {
-        Log.v("RecyclerView", "" + position + " a été sélectionné: " + listEtudiant.get(position).getNom());
-        selectionEtudiant(position);
     }
 
     @Override
@@ -106,6 +118,9 @@ public class AccueilProfActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Cette méthode trie alphabétiquement la liste des étudiants par leur nom de famille.
+     */
     public void triAlpha(){
         List<Etudiant> listEtudiantSorted = new ArrayList<>();
         Collections.sort(listEtudiant, new Comparator<Etudiant>() {
