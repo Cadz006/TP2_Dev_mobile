@@ -9,11 +9,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import bdeb.qc.ca.tp2_dev_mobile.Database.DatabaseAPI;
 import bdeb.qc.ca.tp2_dev_mobile.R;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText etxtEmail;
     private EditText etxtPassword;
+
+    DatabaseAPI db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
