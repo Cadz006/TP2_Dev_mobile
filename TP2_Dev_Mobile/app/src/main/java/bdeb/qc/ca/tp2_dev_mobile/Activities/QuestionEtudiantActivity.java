@@ -47,6 +47,10 @@ public class QuestionEtudiantActivity extends AppCompatActivity
         btnCameraListener();
         setToolbar();
 
+        setupForProf();
+    }
+
+    private void setupForProf() {
         IsProf = getIntent().getBooleanExtra("IsProf", false);
 
         if(IsProf)
