@@ -42,6 +42,6 @@ public class AdminProfAdapter extends RecyclerView.Adapter<AdminProfAdapter.Admi
 
     @Override
     public int getItemCount() {
-        return 0;
+        return rviList.size();
     }
 }

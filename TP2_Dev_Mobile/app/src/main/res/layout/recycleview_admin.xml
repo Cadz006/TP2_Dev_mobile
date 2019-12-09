@@ -54,4 +54,11 @@
             app:layout_constraintStart_toEndOf="@+id/txtEmailAdmin"
             app:layout_constraintTop_toTopOf="@+id/txtEmailAdmin" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/viewSeparator2"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_below="@+id/pbProgress"
+        android:background="#000000" />
 </LinearLayout>
