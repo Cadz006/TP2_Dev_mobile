@@ -24,6 +24,7 @@ public class AcceuilEtudiantActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private MetierAdapter metierAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    private boolean IsProf;
 
     public static final String KEY_METIER = "bdeb.qc.ca.tp2_dev_mobile.AcceuilEtudiantActivity.KEY_QUESTIONS";
 
@@ -57,11 +58,14 @@ public class AcceuilEtudiantActivity extends AppCompatActivity {
                 openActivityMetierLetter(position);
             }
         });
+
+        IsProf = getIntent().getBooleanExtra("IsProf", false);
     }
 
     public void openActivityMetierLetter(int position) {
         Intent intent = new Intent(this, QuestionListActivity.class);
         intent.putExtra(KEY_METIER, metierList.get(position));
+        if(IsProf) { intent.putExtra("IsProf", true); }
         startActivity(intent);
     }
 

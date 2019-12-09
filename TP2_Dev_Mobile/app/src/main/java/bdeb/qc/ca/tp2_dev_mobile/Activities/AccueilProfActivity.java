@@ -77,8 +77,7 @@ public class AccueilProfActivity extends AppCompatActivity {
         Etudiant etudiant = listEtudiant.get(position);
         positionEtudiant = position;
         Intent intent = new Intent(this, AcceuilEtudiantActivity.class);
-        intent.putExtra("nom", etudiant.getNom());
-        intent.putExtra("prenom", etudiant.getPrenom());
+        intent.putExtra("IsProf", true);
         startActivityForResult(intent, 2);
     }
 

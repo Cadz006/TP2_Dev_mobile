@@ -19,6 +19,7 @@ public class QuestionListActivity extends AppCompatActivity
 {
     private Metier metier;
     private QuestionItemAdapter adapter;
+    private boolean IsProf;
 
     public static final String KEY_QUESTION = "bdeb.qc.ca.tp2_dev_mobile.QuestionListActivity.KEY_QUESTION";
     public static final int EDIT_QUESTION_CODE = 794;
@@ -32,6 +33,8 @@ public class QuestionListActivity extends AppCompatActivity
         createToolbar();
         createRecyclerView();
         addListenerToAdapter();
+
+        IsProf = getIntent().getBooleanExtra("IsProf", false);
     }
 
     private void createToolbar()
@@ -61,6 +64,7 @@ public class QuestionListActivity extends AppCompatActivity
                 QuestionListItem question = metier.getQuestions().get(pos);
                 Intent intent = new Intent(QuestionListActivity.this, QuestionEtudiantActivity.class);
                 intent.putExtra(KEY_QUESTION, question);
+                if(IsProf) { intent.putExtra("IsProf", true); }
                 startActivity(intent);
             }
         });

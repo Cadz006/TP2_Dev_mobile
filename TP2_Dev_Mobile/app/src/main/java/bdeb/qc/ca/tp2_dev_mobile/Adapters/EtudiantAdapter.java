@@ -38,6 +38,22 @@ public class EtudiantAdapter extends RecyclerView.Adapter<EtudiantAdapter.Etudia
             tvPrenom = itemView.findViewById(R.id.prenom);
             tvEmail = itemView.findViewById(R.id.email);
 
+            setListener(itemView, listener);
+        }
+
+        private void setListener(View itemView, final OnItemClickListener listener)
+        {
+            itemView.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View view)
+                {
+                    if (listener == null) return;
+                    int pos = getAdapterPosition();
+                    if (pos == RecyclerView.NO_POSITION) return;
+                    listener.onItemClick(pos);
+                }
+            });
         }
     }
 

@@ -32,6 +32,7 @@ public class QuestionEtudiantActivity extends AppCompatActivity
     private ImageView ivPhoto;
     private ImageView ivCommentaireAudio;
     private Uri imgUri;
+    private boolean IsProf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,23 @@ public class QuestionEtudiantActivity extends AppCompatActivity
 
         btnCameraListener();
         setToolbar();
+
+        IsProf = getIntent().getBooleanExtra("IsProf", false);
+
+        if(IsProf)
+        {
+            FloatingActionButton fabCam = findViewById(R.id.fabCamera);
+            FloatingActionButton fabImg = findViewById(R.id.fabGallery);
+            FloatingActionButton fabVoice = findViewById(R.id.fabReponseAudio);
+            FloatingActionButton fabComment = findViewById(R.id.fabEcouterCommentaire);
+
+            fabComment.setImageResource(R.drawable.ic_mic);
+            fabComment.setEnabled(true);
+            fabComment.setBackgroundTintList(getResources().getColorStateList(R.color.colorPrimary));
+            fabCam.hide();
+            fabVoice.hide();
+            fabImg.hide();
+        }
     }
 
     @Override
