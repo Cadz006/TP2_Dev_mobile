@@ -21,5 +21,7 @@
     <string name="estActif">Active</string>
     <string name="noComment">No comment for now</string>
     <string name="addAnswerStudent">Answer the question</string>
+    <string name="AjouterProf">"Add professesor "</string>
+    <string name="AjouterEtudiant">Add student</string>
 </resources>
 
