@@ -26,4 +26,5 @@
     <string name="AjouterEnseignantBD">Ajouter une liste d\'enseignant par la base de donnée</string>
     <string name="AjouterEtudiantIndividuel">Ajouter un seul Étudiant</string>
     <string name="AjouterEtudiantBD">Ajouter une liste d\'étudiant par la base de donnée</string>
+    <string name="Password">Mot de passe</string>
 </resources>

@@ -8,7 +8,7 @@
         android:smallScreens="true"
         android:xlargeScreens="true" />
 
-    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -17,8 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.AccueilAdminActivity"></activity>
-        <activity android:name=".Activities.QuestionListActivity"></activity>
+        <activity android:name=".Activities.AjouterEnseignant"></activity>
+        <activity android:name=".Activities.AccueilAdminActivity" />
+        <activity android:name=".Activities.QuestionListActivity" />
         <activity android:name=".Activities.AccueilProfActivity" />
         <activity android:name=".Activities.LoginActivity">
             <intent-filter>
@@ -29,7 +30,6 @@
         </activity>
         <activity android:name=".Activities.QuestionEtudiantActivity" />
         <activity android:name=".Activities.AcceuilEtudiantActivity" />
-        <activity android:name=".Activities.AjouterEnseignant" />
         <activity android:name=".Activities.AjouterEtudiant" />
     </application>
 

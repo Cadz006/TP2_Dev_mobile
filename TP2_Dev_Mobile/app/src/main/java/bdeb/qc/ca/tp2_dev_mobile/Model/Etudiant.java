@@ -4,6 +4,7 @@ public class Etudiant {
     private String nom;
     private String prenom;
     private String email;
+    private String password;
     private boolean estActif;
     private String acc_token;
     private String type_token;

@@ -27,5 +27,6 @@
     <string name="AjouterEnseignantBD">Add a list of professors from the database</string>
     <string name="AjouterEtudiantIndividuel">Add one student</string>
     <string name="AjouterEtudiantBD">Add a list of students from the database</string>
+    <string name="Password">Password</string>
 </resources>
 

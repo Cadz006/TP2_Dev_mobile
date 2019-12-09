@@ -11,9 +11,12 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.media.MediaPlayer;
+import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -21,18 +24,26 @@ import android.widget.ImageView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.IOException;
+
 import bdeb.qc.ca.tp2_dev_mobile.Model.QuestionListItem;
 import bdeb.qc.ca.tp2_dev_mobile.R;
 
 public class QuestionEtudiantActivity extends AppCompatActivity
 {
+    private static String fileName = null;
+    private static final String LOG_TAG = "AudioRecordTest";
     public static final int CHOISIR_IMAGE = 1;
     public static final int PRENDRE_PHOTO = 0;
     private QuestionListItem question;
     private ImageView ivPhoto;
     private ImageView ivCommentaireAudio;
     private Uri imgUri;
+
     private boolean IsProf;
+    private boolean recording = false, start = false;
+    private MediaRecorder recorder = null;
+    private MediaPlayer player = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +56,8 @@ public class QuestionEtudiantActivity extends AppCompatActivity
         ivCommentaireAudio.setEnabled(false);
 
         btnCameraListener();
+        btnRecordVoice();
+        btnPlayReponse();
         setToolbar();
 
         setupForProf();
@@ -106,6 +119,90 @@ public class QuestionEtudiantActivity extends AppCompatActivity
                 startActivityForResult(intent, CHOISIR_IMAGE);
             }
         });
+    }
+
+    private void btnRecordVoice(){
+        final FloatingActionButton fabRecord = findViewById(R.id.fabReponseAudio);
+        fabRecord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!recording){
+                    recordAudio();
+                    fabRecord.setImageResource(R.drawable.ic_mic_off);
+                }else{
+                    stopAudio();
+                    fabRecord.setImageResource(R.drawable.ic_mic);
+                }
+
+            }
+        });
+    }
+
+    private void btnPlayReponse(){
+        FloatingActionButton fabListen = findViewById(R.id.fabEcouterReponse);
+        fabListen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!start){
+                    startPlaying();
+                }else{
+                    stopPlaying();
+                }
+
+            }
+        });
+    }
+
+    /**
+     * Méthode qui arrète de jouer la réponse
+     */
+    private void stopPlaying() {
+        player.release();
+        player = null;
+
+    }
+
+    /**
+     * Méthode qui commence a jouer la réponse
+     */
+    private void startPlaying() {
+        player = new MediaPlayer();
+        try {
+            player.setDataSource(fileName);
+            player.prepare();
+            player.start();
+        } catch (IOException e) {
+            Log.e(LOG_TAG, "prepare() failed");
+        }
+    }
+
+    /**
+     * Méthode qui arrète d'enregistrer la voie
+     */
+    private void stopAudio() {
+        recorder.stop();
+        recorder.release();
+        recorder = null;
+        recording = false;
+    }
+
+    /**
+     * Méthode qui commence à enregistrer la voie
+     */
+    private void recordAudio(){
+        recorder = new MediaRecorder();
+        recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        recorder.setOutputFile(fileName);
+        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+
+        try {
+            recorder.prepare();
+        } catch (IOException e) {
+            Log.e(LOG_TAG, "prepare() failed");
+        }
+        recorder.start();
+        recording = true;
     }
 
     private void openCamera() {

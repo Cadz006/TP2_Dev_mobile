@@ -42,8 +42,6 @@ public class AccueilAdminActivity extends AppCompatActivity {
         return true;
     }
 
-
-
     public void onClickEnseignant(){
         Button btnLogin = findViewById(R.id.BtnAjouterProf);
         btnLogin.setOnClickListener(new View.OnClickListener() {
