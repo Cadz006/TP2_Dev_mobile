@@ -30,14 +30,16 @@ public class QuestionListActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
         metier = getIntent().getParcelableExtra(AcceuilEtudiantActivity.KEY_METIER);
-        createToolbar();
+        setupToolbar();
         createRecyclerView();
         addListenerToAdapter();
-
         IsProf = getIntent().getBooleanExtra("IsProf", false);
     }
 
-    private void createToolbar()
+    /**
+     * Cette méthode set la toolbar avec un onClick qui ferme l'activité
+     */
+    private void setupToolbar()
     {
         Toolbar t = findViewById(R.id.questions_toolbar);
         setSupportActionBar(t);
@@ -54,6 +56,10 @@ public class QuestionListActivity extends AppCompatActivity
         });
     }
 
+    /**
+     * Cette méthode permet à l'utilisateur d'accèder à la page de réponse de l'étudiant pour la
+     * question appuyé
+     */
     private void addListenerToAdapter()
     {
         adapter.setListener(new QuestionItemAdapter.OnItemClickListener()
@@ -70,6 +76,9 @@ public class QuestionListActivity extends AppCompatActivity
         });
     }
 
+    /**
+     * Cette méthode setup la création du recyclerView ainsi que l'adapter
+     */
     private void createRecyclerView()
     {
         RecyclerView recyclerView = findViewById(R.id.questions_recyclerView);
