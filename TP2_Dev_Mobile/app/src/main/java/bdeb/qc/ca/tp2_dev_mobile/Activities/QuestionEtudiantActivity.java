@@ -34,36 +34,31 @@ import java.util.UUID;
 import bdeb.qc.ca.tp2_dev_mobile.Model.QuestionListItem;
 import bdeb.qc.ca.tp2_dev_mobile.R;
 
-public class QuestionEtudiantActivity extends AppCompatActivity {
+public class QuestionEtudiantActivity extends AppCompatActivity
+{
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 1000;
-    private static String fileName = null;
     private static final String LOG_TAG = "AudioRecordTest";
     public static final int CHOISIR_IMAGE = 1;
     public static final int PRENDRE_PHOTO = 0;
     private QuestionListItem question;
     private ImageView ivPhoto;
-    private Uri imgUri;
     private FloatingActionButton fabCamera;
     private FloatingActionButton fabGallery;
     private FloatingActionButton fabVoice;
     private FloatingActionButton fabComment;
     private String pathSave = "";
     private boolean camGall;
-    private boolean IsProf;
     private boolean recording = false, start = false;
     private MediaRecorder recorder = null;
     private MediaPlayer player = null;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_etudiant);
         setupVariables();
-        btnCameraListener();
-        btnGalleryListener();
-        btnRecordVoice();
-        btnPlayReponse();
         setupToolbar();
         setupForProf();
     }
@@ -71,7 +66,8 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
     /**
      * Cette méthode setup les variables avec les findViewById
      */
-    private void setupVariables() {
+    private void setupVariables()
+    {
         question = getIntent().getParcelableExtra(QuestionListActivity.KEY_QUESTION);
         ivPhoto = findViewById(R.id.ivPhoto);
         fabCamera = findViewById(R.id.fabCamera);
@@ -82,11 +78,32 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
     }
 
     /**
+     * Cette méthode set la toolbar avec un onClick qui ferme l'activité
+     */
+    private void setupToolbar()
+    {
+        Toolbar toolbar = findViewById(R.id.toolbarQuestionEtudiant);
+        toolbar.setTitle(question.getQuestion());
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                finish();
+            }
+        });
+    }
+
+    /**
      * Cette méthode modifie la page si l'utilisateur qui l'ouvre est un prof
      */
-    private void setupForProf() {
-        IsProf = getIntent().getBooleanExtra("IsProf", false);
-        if (IsProf) {
+    private void setupForProf()
+    {
+        boolean isProf = getIntent().getBooleanExtra("IsProf", false);
+        if (isProf)
+        {
             fabComment.setImageResource(R.drawable.ic_mic);
             fabComment.setEnabled(true);
             fabComment.setBackgroundTintList(getResources().getColorStateList(R.color.colorPrimary));
@@ -96,144 +113,153 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu_acceuil, menu);
-        return true;
+    /**
+     * Cette méthode vérifie si l'application peut accéder à la caméra.
+     * @param v
+     */
+    public void onCameraButtonClick(View v)
+    {
+        if (ivPhoto.getDrawable() == null)
+        {
+            verifyPermissions();
+        }
+        else
+        {
+            camGall = false;
+            callAlertDialog();
+        }
     }
 
     /**
-     * Cette méthode set la toolbar avec un onClick qui ferme l'activité
+     * Cette méthode permet d'appeler un alertDialog pour confirmer si l'utilsiateur
+     * veut remplacer la photo courrante
      */
-    private void setupToolbar() {
-        Toolbar toolbar = findViewById(R.id.toolbarQuestionEtudiant);
-        toolbar.setTitle(question.getQuestion());
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+    private void callAlertDialog()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(QuestionEtudiantActivity.this);
+        builder.setMessage(R.string.messageConfirmationPhoto).setCancelable(false)
+                .setPositiveButton(R.string.Oui, new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        if (!camGall)
+                        {
+                            verifyPermissions();
+                        }
+                        else
+                        {
+                            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+                            startActivityForResult(intent, CHOISIR_IMAGE);
+                        }
+                    }
+                })
+                .setNegativeButton(R.string.Non, new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.setTitle(R.string.txtConfirmation);
+        alert.show();
     }
 
     /**
-     * Cette méthode permet à l'étudiant de prendre une photo pour sa réponse
+     * Cette méthode demande les permissions afin de prendre la photo
      */
-    private void btnCameraListener() {
-        fabCamera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (ivPhoto.getDrawable() == null) {
-                    verifyPermissions();
-                } else {
-                    camGall = false;
-                    callAlertDialog();
-                }
-            }
-        });
+    private void verifyPermissions()
+    {
+        String[] permissions = { Manifest.permission.CAMERA };
+
+        if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                permissions[0]) == PackageManager.PERMISSION_GRANTED)
+        {
+            openCamera();
+        }
+        else
+        {
+            ActivityCompat.requestPermissions(QuestionEtudiantActivity.this,
+                    permissions,
+                    PRENDRE_PHOTO);
+        }
     }
 
     /**
-     * Cette méthode permet à l'étudiant de prendre une photo de sa gallerie pour sa réponse
+     * Cette méthode ouvre la caméra sur l'appareil de l'étudiant
      */
-    private void btnGalleryListener() {
-        fabGallery.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (ivPhoto.getDrawable() == null) {
-                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-                    startActivityForResult(intent, CHOISIR_IMAGE);
-                } else {
-                    camGall = true;
-                    callAlertDialog();
-                }
-            }
-        });
+    private void openCamera()
+    {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, PRENDRE_PHOTO);
     }
 
     /**
-     * Cette méthode permet à l'étudiant d'enregistrer un sa réponse avec sa voie
+     * Cette méthode ouvre la gallerie pour que l'étudiant choisisse une photo.
+     * Si l'application n'a pas la permission, elle la demandera.
+     * @param v
      */
-    private void btnRecordVoice() {
+    public void onGalleryButtonClick(View v)
+    {
+        if (ivPhoto.getDrawable() == null)
+        {
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+            startActivityForResult(intent, CHOISIR_IMAGE);
+        }
+        else
+        {
+            camGall = true;
+            callAlertDialog();
+        }
+    }
+
+    /**
+     *
+     * @param v
+     */
+    public void onRecordVoiceButtonClick(View v)
+    {
         final FloatingActionButton fabRecord = findViewById(R.id.fabReponseAudio);
         final FloatingActionButton fabListen = findViewById(R.id.fabEcouterReponse);
-        fabRecord.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!recording) {
-                    verifyPermissionsMic();
-                    fabRecord.setImageResource(R.drawable.ic_mic_off);
-
-                } else {
-                    stopAudio();
-                    fabRecord.setImageResource(R.drawable.ic_mic);
-                    fabListen.setBackgroundTintList(getResources().getColorStateList(R.color.colorPrimary));
-                }
-            }
-        });
-    }
-
-    /**
-     * Cette méthode permet de jouer la réponse de l'étudiant
-     */
-    private void btnPlayReponse() {
-        final FloatingActionButton fabListen = findViewById(R.id.fabEcouterReponse);
-        fabListen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!start) {
-                    startPlaying();
-                    fabListen.setImageResource(R.drawable.ic_pause);
-                } else {
-                    stopPlaying();
-                    fabListen.setImageResource(R.drawable.ic_play_arrow);
-                }
-            }
-        });
-    }
-
-    /**
-     * Cette méthode arrète de jouer la réponse
-     */
-    private void stopPlaying() {
-        player.release();
-        player = null;
-        start = false;
-    }
-
-    /**
-     * Cette méthode commence a jouer la réponse
-     */
-    private void startPlaying() {
-        player = new MediaPlayer();
-        try {
-            player.setDataSource(pathSave);
-            player.prepare();
-            player.start();
-        } catch (IOException e) {
-            Log.e(LOG_TAG, "prepare() failed");
+        if (!recording)
+        {
+            verifyPermissionsMic();
+            fabRecord.setImageResource(R.drawable.ic_mic_off);
         }
-        start = true;
+        else
+        {
+            stopAudio();
+            fabRecord.setImageResource(R.drawable.ic_mic);
+            fabListen.setBackgroundTintList(getResources().getColorStateList(R.color.colorPrimary));
+        }
+    }
+
+    private void verifyPermissionsMic()
+    {
+        String[] permissions = {Manifest.permission.RECORD_AUDIO,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE};
+
+        if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                permissions[0]) == PackageManager.PERMISSION_GRANTED &&
+            ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                permissions[1]) == PackageManager.PERMISSION_GRANTED)
+        {
+            recordAudio();
+        }
+        else
+        {
+            ActivityCompat.requestPermissions(this, permissions,
+                    REQUEST_RECORD_AUDIO_PERMISSION);
+        }
     }
 
     /**
-     * Cette méthode arrète d'enregistrer la voie
+     * Cette méthode commence à enregistrer la voix
      */
-    private void stopAudio() {
-        recorder.stop();
-        recorder.release();
-        recorder = null;
-        recording = false;
-    }
-
-    /**
-     * Cette méthode commence à enregistrer la voie
-     */
-    private void recordAudio() {
-        Toast toast = null;
+    private void recordAudio()
+    {
         pathSave = Environment.getExternalStorageDirectory().getAbsolutePath() + "/"
                 + UUID.randomUUID().toString() + "_audio_record.3gp";
         recorder = new MediaRecorder();
@@ -242,66 +268,90 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
         recorder.setOutputFile(pathSave);
         recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
 
-        try {
+        try
+        {
             recorder.prepare();
             recorder.start();
-            toast = Toast.makeText(this, R.string.Recording, Toast.LENGTH_LONG);
+            Toast.makeText(this, R.string.Recording, Toast.LENGTH_LONG).show();
             recording = true;
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             Log.e(LOG_TAG, "prepare() failed");
-            Toast.makeText(this, R.string.RecordingFailed, Toast.LENGTH_LONG);
+            Toast.makeText(this, R.string.RecordingFailed, Toast.LENGTH_LONG).show();
         }
-        toast.show();
     }
 
     /**
-     * Cette méthode ouvre la caméra sur l'appareil de l'étudiant
+     * Cette méthode arrête d'enregistrer la voix
      */
-    private void openCamera() {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, PRENDRE_PHOTO);
+    private void stopAudio()
+    {
+        recorder.stop();
+        recorder.release();
+        recorder = null;
+        recording = false;
     }
 
     /**
-     * Cette méthode demande les permissions afin de prendre la photo
+     * Cette méthode fait jouer ou arrête de jouer le son
+     * @param v
      */
-    private void verifyPermissions() {
-        String[] permissions = {Manifest.permission.CAMERA};
-
-        if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
-                permissions[0]) == PackageManager.PERMISSION_GRANTED) {
-            openCamera();
-        } else {
-            ActivityCompat.requestPermissions(QuestionEtudiantActivity.this,
-                    permissions,
-                    PRENDRE_PHOTO);
+    public void onPlayReponseClick(View v)
+    {
+        final FloatingActionButton fabListen = findViewById(R.id.fabEcouterReponse);
+        if (!start)
+        {
+            startPlaying();
+            fabListen.setImageResource(R.drawable.ic_pause);
         }
-
+        else
+        {
+            stopPlaying();
+            fabListen.setImageResource(R.drawable.ic_play_arrow);
+        }
     }
 
-    private void verifyPermissionsMic() {
-        String[] permissions = {Manifest.permission.RECORD_AUDIO,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE};
-
-        if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
-                permissions[0]) == PackageManager.PERMISSION_GRANTED
-                && ContextCompat.checkSelfPermission(this.getApplicationContext(),
-                permissions[1]) == PackageManager.PERMISSION_GRANTED) {
-            recordAudio();
-        } else {
-            ActivityCompat.requestPermissions(this, permissions,
-                    REQUEST_RECORD_AUDIO_PERMISSION);
+    /**
+     * Cette méthode commence à jouer la réponse
+     */
+    private void startPlaying()
+    {
+        player = new MediaPlayer();
+        try
+        {
+            player.setDataSource(pathSave);
+            player.prepare();
+            player.start();
         }
+        catch (IOException e)
+        {
+            Log.e(LOG_TAG, "prepare() failed");
+        }
+        start = true;
+    }
+
+    /**
+     * Cette méthode arrête de jouer la réponse
+     */
+    private void stopPlaying()
+    {
+        player.release();
+        player = null;
+        start = false;
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults)
+    {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
+        switch (requestCode)
+        {
             case PRENDRE_PHOTO:
                 verifyPermissions();
                 break;
-
             case REQUEST_RECORD_AUDIO_PERMISSION:
                 verifyPermissionsMic();
                 break;
@@ -309,43 +359,25 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && requestCode == PRENDRE_PHOTO) {
-            Bitmap bm = (Bitmap) data.getExtras().get("data");
-            ivPhoto.setImageBitmap(bm);
-        } else if (resultCode == RESULT_OK && requestCode == CHOISIR_IMAGE) {
-            imgUri = data.getData();
-            ivPhoto.setImageURI(imgUri);
-        }
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_acceuil, menu);
+        return true;
     }
 
-    /**
-     * Cette méthode permet d'appeler un alertDialog pour confirmer si l'utilsiateur
-     * veut remplacer la photo courrante
-     */
-    private void callAlertDialog(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(QuestionEtudiantActivity.this);
-        builder.setMessage(R.string.messageConfirmationPhoto).setCancelable(false)
-                .setPositiveButton(R.string.Oui, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if (camGall == false) {
-                            verifyPermissions();
-                        } else {
-                            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-                            startActivityForResult(intent, CHOISIR_IMAGE);
-                        }
-                    }
-                })
-                .setNegativeButton(R.string.Non, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-        AlertDialog alert = builder.create();
-        alert.setTitle(R.string.txtConfirmation);
-        alert.show();
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == PRENDRE_PHOTO)
+        {
+            Bitmap bm = (Bitmap) data.getExtras().get("data");
+            ivPhoto.setImageBitmap(bm);
+        }
+        else if (resultCode == RESULT_OK && requestCode == CHOISIR_IMAGE)
+        {
+            Uri imgUri = data.getData();
+            ivPhoto.setImageURI(imgUri);
+        }
     }
 }
