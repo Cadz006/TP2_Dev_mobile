@@ -19,10 +19,13 @@ public class AjouterEnseignant extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajout_compte);
 
-        setToolbar();
+        setupToolbar();
     }
 
-    private void setToolbar() {
+    /**
+     * Cette méthode set la toolbar avec un onClick qui ferme l'activité
+     */
+    private void setupToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbarAjout);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
