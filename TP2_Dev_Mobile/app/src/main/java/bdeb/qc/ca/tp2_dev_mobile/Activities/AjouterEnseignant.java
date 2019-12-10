@@ -11,21 +11,21 @@ import android.view.View;
 
 import bdeb.qc.ca.tp2_dev_mobile.R;
 
-public class AjouterEnseignant extends AppCompatActivity {
-
-
+public class AjouterEnseignant extends AppCompatActivity
+{
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajout_compte);
-
         setupToolbar();
     }
 
     /**
      * Cette méthode set la toolbar avec un onClick qui ferme l'activité
      */
-    private void setupToolbar() {
+    private void setupToolbar()
+    {
         Toolbar toolbar = findViewById(R.id.toolbarAjout);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -39,7 +39,8 @@ public class AjouterEnseignant extends AppCompatActivity {
 
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_accueil_admin_professor, menu);
         return true;

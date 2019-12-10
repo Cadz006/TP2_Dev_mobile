@@ -17,20 +17,22 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import bdeb.qc.ca.tp2_dev_mobile.R;
 
-public class CameraActivity extends AppCompatActivity {
+public class CameraActivity extends AppCompatActivity
+{
     ImageView ivPhoto;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.camera_activity);
         ivPhoto = findViewById(R.id.ivPhoto);
-
         toolbarSetup();
         btnCameraListener();
     }
 
-    private void btnCameraListener() {
+    private void btnCameraListener()
+    {
         FloatingActionButton fabCamera = findViewById(R.id.fabCamera);
 
         fabCamera.setOnClickListener(new View.OnClickListener() {
@@ -43,13 +45,15 @@ public class CameraActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
+    {
         super.onActivityResult(requestCode, resultCode, data);
         Bitmap bm = (Bitmap) data.getExtras().get("data");
         ivPhoto.setImageBitmap(bm);
     }
 
-    private void toolbarSetup() {
+    private void toolbarSetup()
+    {
         Toolbar toolbar = findViewById(R.id.toolbarAcceuil);
         toolbar.setTitle(getResources().getString(R.string.toolbarTitle));
         setSupportActionBar(toolbar);
