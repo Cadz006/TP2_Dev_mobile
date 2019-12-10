@@ -31,4 +31,7 @@
     <string name="messageConfirmationPhoto">Voulez-vous changer la photo courrante avec une nouvelle photo?</string>
     <string name="Oui">Oui</string>
     <string name="Non">Non</string>
+    <string name="PermissionAccepter">Permission Accepté</string>
+    <string name="PermissionRefuse">Permission Refusé</string>
+    <string name="deconnexion">Se déconnecter</string>
 </resources>
