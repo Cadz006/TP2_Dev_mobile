@@ -21,11 +21,11 @@
         android:id="@+id/BtnAjouterProf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="148dp"
         android:onClick="onClickEnseignant"
         android:text="@string/AjouterProf"
+        app:layout_constraintBottom_toTopOf="@+id/BtnAjouerEtudiant"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarAdmin" />
 
@@ -33,10 +33,10 @@
         android:id="@+id/BtnAjouerEtudiant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="152dp"
         android:text="@string/AjouterEtudiant"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BtnAjouterProf" />
 </androidx.constraintlayout.widget.ConstraintLayout>

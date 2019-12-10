@@ -92,22 +92,26 @@ public class AccueilProfActivity extends AppCompatActivity {
      * Cette méthode est appelée lorsque l'utilisateur clique sur un étudiant.
      * @param position La position de l'étudiant dans la liste.
      */
-    public void selectionEtudiant(int position){
+    public void selectionEtudiant(int position)
+    {
         Intent intent = new Intent(this, AcceuilEtudiantActivity.class);
         intent.putExtra("IsProf", true);
         startActivityForResult(intent, 2);
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_accueil_prof, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item)
+    {
+        switch (item.getItemId())
+        {
             case R.id.triAlpha:
                 triAlpha();
                 break;
@@ -121,7 +125,8 @@ public class AccueilProfActivity extends AppCompatActivity {
     /**
      * Cette méthode trie alphabétiquement la liste des étudiants par leur nom de famille.
      */
-    public void triAlpha(){
+    public void triAlpha()
+    {
         List<Etudiant> listEtudiantSorted = new ArrayList<>();
         Collections.sort(listEtudiant, new Comparator<Etudiant>() {
             @Override
@@ -129,13 +134,9 @@ public class AccueilProfActivity extends AppCompatActivity {
                 return etudiant1.getNom().compareTo(etudiant2.getNom());
             }
         });
-        for (Etudiant etudiant : listEtudiant){
-            listEtudiantSorted.add(etudiant);
-        }
-        listEtudiant = new ArrayList<>();
-        for (Etudiant etudiant : listEtudiantSorted){
-            listEtudiant.add(etudiant);
-        }
 
+        listEtudiantSorted.addAll(listEtudiant);
+        listEtudiant = new ArrayList<>();
+        listEtudiant.addAll(listEtudiantSorted);
     }
 }

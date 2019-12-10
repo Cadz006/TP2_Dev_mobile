@@ -133,9 +133,12 @@ public class QuestionEtudiantActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                if(ivPhoto.getDrawable() == null){
+                if(ivPhoto.getDrawable() == null)
+                {
                     verifyPermissions();
-                } else{
+                }
+                else
+                {
                     camGall = false;
                     callAlertDialog();
                 }
@@ -153,10 +156,13 @@ public class QuestionEtudiantActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                if(ivPhoto.getDrawable() == null){
+                if(ivPhoto.getDrawable() == null)
+                {
                     Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
                     startActivityForResult(intent, CHOISIR_IMAGE);
-                } else{
+                }
+                else
+                {
                     camGall = true;
                     callAlertDialog();
                 }
@@ -329,7 +335,7 @@ public class QuestionEtudiantActivity extends AppCompatActivity
      * Cette méthode permet d'appeler un alertDialog pour confirmer si l'utilsiateur
      * veut remplacer la photo courrante
      */
-    private void callAlertDialog() {
+    private void callAlertDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(QuestionEtudiantActivity.this);
         builder.setMessage(R.string.messageConfirmationPhoto).setCancelable(false)
                 .setPositiveButton(R.string.Oui, new DialogInterface.OnClickListener() {

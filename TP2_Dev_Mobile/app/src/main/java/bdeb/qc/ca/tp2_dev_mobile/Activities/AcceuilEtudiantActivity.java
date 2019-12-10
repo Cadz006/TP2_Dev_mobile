@@ -55,12 +55,12 @@ public class AcceuilEtudiantActivity extends AppCompatActivity {
     private void addSampleDataToMetierList()
     {
         metierList = new ArrayList<>();
-        metierList.add(new Metier("Machouin", 50));
-        metierList.add(new Metier("Ewhatever", 70));
-        metierList.add(new Metier("Torpinouche", 100));
-        metierList.add(new Metier("Ipatente", 15));
-        metierList.add(new Metier("Esti de BS", 0));
-        metierList.add(new Metier("Rouyn-Noranda", 60));
+        metierList.add(new Metier(getString(R.string.metier_M), 50));
+        metierList.add(new Metier(getString(R.string.metier_É), 70));
+        metierList.add(new Metier(getString(R.string.metier_T), 100));
+        metierList.add(new Metier(getString(R.string.metier_I), 15));
+        metierList.add(new Metier(getString(R.string.metier_E), 0));
+        metierList.add(new Metier(getString(R.string.metier_R), 60));
     }
 
     /**
