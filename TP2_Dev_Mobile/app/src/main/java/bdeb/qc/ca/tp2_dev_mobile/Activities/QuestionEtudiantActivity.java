@@ -17,6 +17,7 @@ import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
@@ -28,6 +29,7 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.IOException;
+import java.util.UUID;
 
 import bdeb.qc.ca.tp2_dev_mobile.Model.QuestionListItem;
 import bdeb.qc.ca.tp2_dev_mobile.R;
@@ -45,18 +47,16 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
     private FloatingActionButton fabGallery;
     private FloatingActionButton fabVoice;
     private FloatingActionButton fabComment;
-
+    private String pathSave = "";
     private boolean camGall;
     private boolean IsProf;
     private boolean recording = false, start = false;
     private MediaRecorder recorder = null;
     private MediaPlayer player = null;
-    private boolean IsProf;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_etudiant);
         setupVariables();
@@ -71,8 +71,7 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
     /**
      * Cette méthode setup les variables avec les findViewById
      */
-    private void setupVariables()
-    {
+    private void setupVariables() {
         question = getIntent().getParcelableExtra(QuestionListActivity.KEY_QUESTION);
         ivPhoto = findViewById(R.id.ivPhoto);
         fabCamera = findViewById(R.id.fabCamera);
@@ -85,11 +84,9 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
     /**
      * Cette méthode modifie la page si l'utilisateur qui l'ouvre est un prof
      */
-    private void setupForProf()
-    {
+    private void setupForProf() {
         IsProf = getIntent().getBooleanExtra("IsProf", false);
-        if(IsProf)
-        {
+        if (IsProf) {
             fabComment.setImageResource(R.drawable.ic_mic);
             fabComment.setEnabled(true);
             fabComment.setBackgroundTintList(getResources().getColorStateList(R.color.colorPrimary));
@@ -100,8 +97,7 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
+    public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_acceuil, menu);
         return true;
@@ -110,17 +106,14 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
     /**
      * Cette méthode set la toolbar avec un onClick qui ferme l'activité
      */
-    private void setupToolbar()
-    {
+    private void setupToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbarQuestionEtudiant);
         toolbar.setTitle(question.getQuestion());
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener()
-        {
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 finish();
             }
         });
@@ -129,16 +122,13 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
     /**
      * Cette méthode permet à l'étudiant de prendre une photo pour sa réponse
      */
-    private void btnCameraListener()
-    {
-        fabCamera.setOnClickListener(new View.OnClickListener()
-        {
+    private void btnCameraListener() {
+        fabCamera.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
-                if(ivPhoto.getDrawable() == null){
+            public void onClick(View view) {
+                if (ivPhoto.getDrawable() == null) {
                     verifyPermissions();
-                } else{
+                } else {
                     camGall = false;
                     callAlertDialog();
                 }
@@ -149,17 +139,14 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
     /**
      * Cette méthode permet à l'étudiant de prendre une photo de sa gallerie pour sa réponse
      */
-    private void btnGalleryListener()
-    {
-        fabGallery.setOnClickListener(new View.OnClickListener()
-        {
+    private void btnGalleryListener() {
+        fabGallery.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
-                if(ivPhoto.getDrawable() == null){
+            public void onClick(View view) {
+                if (ivPhoto.getDrawable() == null) {
                     Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
                     startActivityForResult(intent, CHOISIR_IMAGE);
-                } else{
+                } else {
                     camGall = true;
                     callAlertDialog();
                 }
@@ -170,24 +157,20 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
     /**
      * Cette méthode permet à l'étudiant d'enregistrer un sa réponse avec sa voie
      */
-    private void btnRecordVoice()
-    {
+    private void btnRecordVoice() {
         final FloatingActionButton fabRecord = findViewById(R.id.fabReponseAudio);
-        fabRecord.setOnClickListener(new View.OnClickListener()
-        {
+        final FloatingActionButton fabListen = findViewById(R.id.fabEcouterReponse);
+        fabRecord.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                if (!recording)
-                {
+            public void onClick(View v) {
+                if (!recording) {
                     verifyPermissionsMic();
                     fabRecord.setImageResource(R.drawable.ic_mic_off);
 
-                }
-                else
-                {
+                } else {
                     stopAudio();
                     fabRecord.setImageResource(R.drawable.ic_mic);
+                    fabListen.setBackgroundTintList(getResources().getColorStateList(R.color.colorPrimary));
                 }
             }
         });
@@ -196,21 +179,17 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
     /**
      * Cette méthode permet de jouer la réponse de l'étudiant
      */
-    private void btnPlayReponse()
-    {
-        FloatingActionButton fabListen = findViewById(R.id.fabEcouterReponse);
-        fabListen.setOnClickListener(new View.OnClickListener()
-        {
+    private void btnPlayReponse() {
+        final FloatingActionButton fabListen = findViewById(R.id.fabEcouterReponse);
+        fabListen.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                if (!start)
-                {
+            public void onClick(View v) {
+                if (!start) {
                     startPlaying();
-                }
-                else
-                {
+                    fabListen.setImageResource(R.drawable.ic_pause);
+                } else {
                     stopPlaying();
+                    fabListen.setImageResource(R.drawable.ic_play_arrow);
                 }
             }
         });
@@ -219,35 +198,31 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
     /**
      * Cette méthode arrète de jouer la réponse
      */
-    private void stopPlaying()
-    {
+    private void stopPlaying() {
         player.release();
         player = null;
+        start = false;
     }
 
     /**
      * Cette méthode commence a jouer la réponse
      */
-    private void startPlaying()
-    {
+    private void startPlaying() {
         player = new MediaPlayer();
-        try
-        {
-            player.setDataSource(fileName);
+        try {
+            player.setDataSource(pathSave);
             player.prepare();
             player.start();
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             Log.e(LOG_TAG, "prepare() failed");
         }
+        start = true;
     }
 
     /**
      * Cette méthode arrète d'enregistrer la voie
      */
-    private void stopAudio()
-    {
+    private void stopAudio() {
         recorder.stop();
         recorder.release();
         recorder = null;
@@ -257,32 +232,32 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
     /**
      * Cette méthode commence à enregistrer la voie
      */
-    private void recordAudio()
-    {
+    private void recordAudio() {
+        Toast toast = null;
+        pathSave = Environment.getExternalStorageDirectory().getAbsolutePath() + "/"
+                + UUID.randomUUID().toString() + "_audio_record.3gp";
         recorder = new MediaRecorder();
         recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-        recorder.setOutputFile(fileName);
+        recorder.setOutputFile(pathSave);
         recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
 
-        try
-        {
+        try {
             recorder.prepare();
             recorder.start();
-            Toast.makeText(this, "Recording", Toast.LENGTH_SHORT);
+            toast = Toast.makeText(this, R.string.Recording, Toast.LENGTH_LONG);
             recording = true;
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             Log.e(LOG_TAG, "prepare() failed");
+            Toast.makeText(this, R.string.RecordingFailed, Toast.LENGTH_LONG);
         }
+        toast.show();
     }
 
     /**
      * Cette méthode ouvre la caméra sur l'appareil de l'étudiant
      */
-    private void openCamera()
-    {
+    private void openCamera() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, PRENDRE_PHOTO);
     }
@@ -290,17 +265,13 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
     /**
      * Cette méthode demande les permissions afin de prendre la photo
      */
-    private void verifyPermissions()
-    {
+    private void verifyPermissions() {
         String[] permissions = {Manifest.permission.CAMERA};
 
-        if(ContextCompat.checkSelfPermission(this.getApplicationContext(),
-                permissions[0]) == PackageManager.PERMISSION_GRANTED)
-        {
+        if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                permissions[0]) == PackageManager.PERMISSION_GRANTED) {
             openCamera();
-        }
-        else
-        {
+        } else {
             ActivityCompat.requestPermissions(QuestionEtudiantActivity.this,
                     permissions,
                     PRENDRE_PHOTO);
@@ -309,44 +280,41 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
     }
 
     private void verifyPermissionsMic() {
-        String[] permissions = {Manifest.permission.RECORD_AUDIO};
+        String[] permissions = {Manifest.permission.RECORD_AUDIO,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
         if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
-                permissions[0]) == PackageManager.PERMISSION_GRANTED){
+                permissions[0]) == PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                permissions[1]) == PackageManager.PERMISSION_GRANTED) {
             recordAudio();
-        } else{
+        } else {
             ActivityCompat.requestPermissions(this, permissions,
                     REQUEST_RECORD_AUDIO_PERMISSION);
         }
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
-    {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode)
-        {
+        switch (requestCode) {
             case PRENDRE_PHOTO:
                 verifyPermissions();
-            break;
+                break;
 
             case REQUEST_RECORD_AUDIO_PERMISSION:
                 verifyPermissionsMic();
-            break;
+                break;
         }
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
-    {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK && requestCode == PRENDRE_PHOTO)
-        {
+        if (resultCode == RESULT_OK && requestCode == PRENDRE_PHOTO) {
             Bitmap bm = (Bitmap) data.getExtras().get("data");
             ivPhoto.setImageBitmap(bm);
-        }
-        else if(resultCode == RESULT_OK && requestCode == CHOISIR_IMAGE)
-        {
+        } else if (resultCode == RESULT_OK && requestCode == CHOISIR_IMAGE) {
             imgUri = data.getData();
             ivPhoto.setImageURI(imgUri);
         }
@@ -362,7 +330,7 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
                 .setPositiveButton(R.string.Oui, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if (camGall == false){
+                        if (camGall == false) {
                             verifyPermissions();
                         } else {
                             Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);

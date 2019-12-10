@@ -34,4 +34,6 @@
     <string name="PermissionAccepter">Permission Accepté</string>
     <string name="PermissionRefuse">Permission Refusé</string>
     <string name="deconnexion">Se déconnecter</string>
+    <string name="Recording">Enregistrement</string>
+    <string name="RecordingFailed">Enregistrement Échouer</string>
 </resources>

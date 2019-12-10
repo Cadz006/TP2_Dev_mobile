@@ -35,4 +35,6 @@
     <string name="PermissionAccepter">Permission Granted</string>
     <string name="PermissionRefuse">Permission Denied</string>
     <string name="deconnexion">Logout</string>
+    <string name="RecordingFailed">Recording Failed</string>
+    <string name="Recording">Recording...</string>
 </resources>
