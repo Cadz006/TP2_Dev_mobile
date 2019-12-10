@@ -114,9 +114,6 @@ public class AccueilProfActivity extends AppCompatActivity {
             case R.id.triActCompl:
                 finish();
                 break;
-            case R.id.logoutProf:
-                finish();
-                break;
         }
         return true;
     }

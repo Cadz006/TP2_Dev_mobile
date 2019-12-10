@@ -9,7 +9,4 @@
         android:id="@+id/triActCompl"
         android:title="@string/triActivitesCompl"
         app:showAsAction="never" />
-    <item
-        android:id="@+id/logoutProf"
-        android:title="@string/deconnexion" />
 </menu>

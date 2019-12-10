@@ -23,7 +23,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -32,8 +31,8 @@ import java.io.IOException;
 import bdeb.qc.ca.tp2_dev_mobile.Model.QuestionListItem;
 import bdeb.qc.ca.tp2_dev_mobile.R;
 
-public class QuestionEtudiantActivity extends AppCompatActivity {
-    private static final int REQUEST_RECORD_AUDIO_PERMISSION = 1000;
+public class QuestionEtudiantActivity extends AppCompatActivity
+{
     private static String fileName = null;
     private static final String LOG_TAG = "AudioRecordTest";
     public static final int CHOISIR_IMAGE = 1;
@@ -51,8 +50,6 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
     private boolean recording = false, start = false;
     private MediaRecorder recorder = null;
     private MediaPlayer player = null;
-    private boolean IsProf;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -180,15 +177,15 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
             {
                 if (!recording)
                 {
-                    verifyPermissionsMic();
+                    recordAudio();
                     fabRecord.setImageResource(R.drawable.ic_mic_off);
-
                 }
                 else
                 {
                     stopAudio();
                     fabRecord.setImageResource(R.drawable.ic_mic);
                 }
+
             }
         });
     }
@@ -268,14 +265,13 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
         try
         {
             recorder.prepare();
-            recorder.start();
-            Toast.makeText(this, "Recording", Toast.LENGTH_SHORT);
-            recording = true;
         }
         catch (IOException e)
         {
             Log.e(LOG_TAG, "prepare() failed");
         }
+        recorder.start();
+        recording = true;
     }
 
     /**
@@ -305,35 +301,12 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
                     permissions,
                     PRENDRE_PHOTO);
         }
-
-    }
-
-    private void verifyPermissionsMic() {
-        String[] permissions = {Manifest.permission.RECORD_AUDIO};
-
-        if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
-                permissions[0]) == PackageManager.PERMISSION_GRANTED){
-            recordAudio();
-        } else{
-            ActivityCompat.requestPermissions(this, permissions,
-                    REQUEST_RECORD_AUDIO_PERMISSION);
-        }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
     {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode)
-        {
-            case PRENDRE_PHOTO:
-                verifyPermissions();
-            break;
-
-            case REQUEST_RECORD_AUDIO_PERMISSION:
-                verifyPermissionsMic();
-            break;
-        }
+        verifyPermissions();
     }
 
     @Override
