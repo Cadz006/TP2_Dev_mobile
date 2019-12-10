@@ -21,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -29,8 +30,8 @@ import java.io.IOException;
 import bdeb.qc.ca.tp2_dev_mobile.Model.QuestionListItem;
 import bdeb.qc.ca.tp2_dev_mobile.R;
 
-public class QuestionEtudiantActivity extends AppCompatActivity
-{
+public class QuestionEtudiantActivity extends AppCompatActivity {
+    private static final int REQUEST_RECORD_AUDIO_PERMISSION = 1000;
     private static String fileName = null;
     private static final String LOG_TAG = "AudioRecordTest";
     public static final int CHOISIR_IMAGE = 1;
@@ -42,6 +43,8 @@ public class QuestionEtudiantActivity extends AppCompatActivity
     private boolean recording = false, start = false;
     private MediaRecorder recorder = null;
     private MediaPlayer player = null;
+    private boolean IsProf;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,11 +55,30 @@ public class QuestionEtudiantActivity extends AppCompatActivity
         ivPhoto = findViewById(R.id.ivPhoto);
         ivCommentaireAudio = findViewById(R.id.fabEcouterCommentaire);
         ivCommentaireAudio.setEnabled(false);
-
         btnCameraListener();
         btnRecordVoice();
         btnPlayReponse();
         setToolbar();
+        setupForProf();
+    }
+
+
+    private void setupForProf() {
+        IsProf = getIntent().getBooleanExtra("IsProf", false);
+
+        if (IsProf) {
+            FloatingActionButton fabCam = findViewById(R.id.fabCamera);
+            FloatingActionButton fabImg = findViewById(R.id.fabGallery);
+            FloatingActionButton fabVoice = findViewById(R.id.fabReponseAudio);
+            FloatingActionButton fabComment = findViewById(R.id.fabEcouterCommentaire);
+
+            fabComment.setImageResource(R.drawable.ic_mic);
+            fabComment.setEnabled(true);
+            fabComment.setBackgroundTintList(getResources().getColorStateList(R.color.colorPrimary));
+            fabCam.hide();
+            fabVoice.hide();
+            fabImg.hide();
+        }
     }
 
     @Override
@@ -78,6 +100,7 @@ public class QuestionEtudiantActivity extends AppCompatActivity
             }
         });
     }
+
     private void btnCameraListener() {
         FloatingActionButton fabCamera = findViewById(R.id.fabCamera);
         FloatingActionButton fabGallery = findViewById(R.id.fabGallery);
@@ -98,15 +121,16 @@ public class QuestionEtudiantActivity extends AppCompatActivity
         });
     }
 
-    private void btnRecordVoice(){
+    private void btnRecordVoice() {
         final FloatingActionButton fabRecord = findViewById(R.id.fabReponseAudio);
         fabRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!recording){
-                    recordAudio();
+                if (!recording) {
+                    verifyPermissionsMic();
                     fabRecord.setImageResource(R.drawable.ic_mic_off);
-                }else{
+
+                } else {
                     stopAudio();
                     fabRecord.setImageResource(R.drawable.ic_mic);
                 }
@@ -115,14 +139,14 @@ public class QuestionEtudiantActivity extends AppCompatActivity
         });
     }
 
-    private void btnPlayReponse(){
+    private void btnPlayReponse() {
         FloatingActionButton fabListen = findViewById(R.id.fabEcouterReponse);
         fabListen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!start){
+                if (!start) {
                     startPlaying();
-                }else{
+                } else {
                     stopPlaying();
                 }
 
@@ -166,7 +190,7 @@ public class QuestionEtudiantActivity extends AppCompatActivity
     /**
      * Méthode qui commence à enregistrer la voie
      */
-    private void recordAudio(){
+    private void recordAudio() {
         recorder = new MediaRecorder();
         recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
@@ -175,11 +199,13 @@ public class QuestionEtudiantActivity extends AppCompatActivity
 
         try {
             recorder.prepare();
+            recorder.start();
+            Toast.makeText(this, "Recording", Toast.LENGTH_SHORT);
+            recording = true;
         } catch (IOException e) {
             Log.e(LOG_TAG, "prepare() failed");
         }
-        recorder.start();
-        recording = true;
+
     }
 
     private void openCamera() {
@@ -187,33 +213,52 @@ public class QuestionEtudiantActivity extends AppCompatActivity
         startActivityForResult(intent, PRENDRE_PHOTO);
     }
 
-    private void verifyPermissions(){
+    private void verifyPermissions() {
         String[] permissions = {Manifest.permission.CAMERA};
 
-        if(ContextCompat.checkSelfPermission(this.getApplicationContext(),
-                permissions[0]) == PackageManager.PERMISSION_GRANTED){
+        if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                permissions[0]) == PackageManager.PERMISSION_GRANTED) {
             openCamera();
-        }
-        else{
+        } else {
             ActivityCompat.requestPermissions(QuestionEtudiantActivity.this,
                     permissions,
                     PRENDRE_PHOTO);
+        }
+
+    }
+
+    private void verifyPermissionsMic() {
+        String[] permissions = {Manifest.permission.RECORD_AUDIO};
+
+        if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                permissions[0]) == PackageManager.PERMISSION_GRANTED){
+            recordAudio();
+        } else{
+            ActivityCompat.requestPermissions(this, permissions,
+                    REQUEST_RECORD_AUDIO_PERMISSION);
         }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        verifyPermissions();
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode)
+        {
+            case PRENDRE_PHOTO:
+                verifyPermissions();
+
+            case REQUEST_RECORD_AUDIO_PERMISSION:
+                verifyPermissionsMic();
+        }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK && requestCode == PRENDRE_PHOTO){
+        if (resultCode == RESULT_OK && requestCode == PRENDRE_PHOTO) {
             Bitmap bm = (Bitmap) data.getExtras().get("data");
             ivPhoto.setImageBitmap(bm);
-        }
-        else if(resultCode == RESULT_OK && requestCode == CHOISIR_IMAGE){
+        } else if (resultCode == RESULT_OK && requestCode == CHOISIR_IMAGE) {
 
             imgUri = data.getData();
             ivPhoto.setImageURI(imgUri);

@@ -27,4 +27,6 @@
     <string name="AjouterEtudiantIndividuel">Ajouter un seul Étudiant</string>
     <string name="AjouterEtudiantBD">Ajouter une liste d\'étudiant par la base de donnée</string>
     <string name="Password">Mot de passe</string>
+    <string name="PermissionAccepter">Permission Accepté</string>
+    <string name="PermissionRefuse">Permission Refusé</string>
 </resources>

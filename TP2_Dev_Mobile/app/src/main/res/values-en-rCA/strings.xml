@@ -28,5 +28,7 @@
     <string name="AjouterEtudiantIndividuel">Add one student</string>
     <string name="AjouterEtudiantBD">Add a list of students from the database</string>
     <string name="Password">Password</string>
+    <string name="PermissionAccepter">Permission Granted</string>
+    <string name="PermissionRefuse">Permission Denied</string>
 </resources>
 
