@@ -34,4 +34,5 @@
     <string name="Oui">Yes</string>
     <string name="PermissionAccepter">Permission Granted</string>
     <string name="PermissionRefuse">Permission Denied</string>
+    <string name="deconnexion">Logout</string>
 </resources>
