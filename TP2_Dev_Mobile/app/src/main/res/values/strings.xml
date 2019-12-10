@@ -27,4 +27,8 @@
     <string name="AjouterEtudiantIndividuel">Ajouter un seul Étudiant</string>
     <string name="AjouterEtudiantBD">Ajouter une liste d\'étudiant par la base de donnée</string>
     <string name="Password">Mot de passe</string>
+    <string name="txtConfirmation">Confirmation de changement</string>
+    <string name="messageConfirmationPhoto">Voulez-vous changer la photo courrante avec une nouvelle photo?</string>
+    <string name="Oui">Oui</string>
+    <string name="Non">Non</string>
 </resources>

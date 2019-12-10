@@ -2,12 +2,14 @@ package bdeb.qc.ca.tp2_dev_mobile.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -43,6 +45,7 @@ public class QuestionEtudiantActivity extends AppCompatActivity
     private FloatingActionButton fabVoice;
     private FloatingActionButton fabComment;
 
+    private boolean camGall;
     private boolean IsProf;
     private boolean recording = false, start = false;
     private MediaRecorder recorder = null;
@@ -130,7 +133,12 @@ public class QuestionEtudiantActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                verifyPermissions();
+                if(ivPhoto.getDrawable() == null){
+                    verifyPermissions();
+                } else{
+                    camGall = false;
+                    callAlertDialog();
+                }
             }
         });
     }
@@ -145,8 +153,13 @@ public class QuestionEtudiantActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-                startActivityForResult(intent, CHOISIR_IMAGE);
+                if(ivPhoto.getDrawable() == null){
+                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+                    startActivityForResult(intent, CHOISIR_IMAGE);
+                } else{
+                    camGall = true;
+                    callAlertDialog();
+                }
             }
         });
     }
@@ -310,5 +323,34 @@ public class QuestionEtudiantActivity extends AppCompatActivity
             imgUri = data.getData();
             ivPhoto.setImageURI(imgUri);
         }
+    }
+
+    /**
+     * Cette méthode permet d'appeler un alertDialog pour confirmer si l'utilsiateur
+     * veut remplacer la photo courrante
+     */
+    private void callAlertDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(QuestionEtudiantActivity.this);
+        builder.setMessage(R.string.messageConfirmationPhoto).setCancelable(false)
+                .setPositiveButton(R.string.Oui, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (camGall == false){
+                            verifyPermissions();
+                        } else {
+                            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+                            startActivityForResult(intent, CHOISIR_IMAGE);
+                        }
+                    }
+                })
+                .setNegativeButton(R.string.Non, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.setTitle(R.string.txtConfirmation);
+        alert.show();
     }
 }
