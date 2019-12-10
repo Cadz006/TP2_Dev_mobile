@@ -324,7 +324,7 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
      * Cette méthode permet d'appeler un alertDialog pour confirmer si l'utilsiateur
      * veut remplacer la photo courrante
      */
-    private void callAlertDialog() {
+    private void callAlertDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(QuestionEtudiantActivity.this);
         builder.setMessage(R.string.messageConfirmationPhoto).setCancelable(false)
                 .setPositiveButton(R.string.Oui, new DialogInterface.OnClickListener() {

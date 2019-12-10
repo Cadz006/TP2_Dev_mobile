@@ -26,58 +26,32 @@ public class LoginActivity extends AppCompatActivity
         setContentView(R.layout.login_activity);
         etxtEmail = findViewById(R.id.login_etxtEmail);
         etxtPassword = findViewById(R.id.login_etxtPassword);
-
         setupToolbar();
-        btnLoginListener(etxtEmail, etxtPassword);
-        btnGoogleListener();
     }
 
-    /**
-     * Cette méthode permet de se logger avec le bouton google
-     */
-    private void btnGoogleListener()
+    public void onGoogleButtonClick(View v)
     {
-        Button btnGoogle = findViewById(R.id.login_btnLoginGoogle);
 
-        btnGoogle.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-
-            }
-        });
     }
 
-    /**
-     * Cette méthode permet à l'utilisateur de se logger.
-     * Si les paramètres sont vides, il y a un message d'erreur.
-     * @param etEmail L'edit text qui contient le e-mail
-     * @param etPassword L'edit text qui contient le password
-     */
-    private void btnLoginListener(final EditText etEmail, final EditText etPassword)
+    public void onLoginClick(View v)
     {
-        Button btnLogin = findViewById(R.id.login_btnLogin);
-
-        btnLogin.setOnClickListener(new View.OnClickListener()
+        boolean badConnection = false;
+        if (etxtEmail.getText().toString().trim().isEmpty())
         {
-            @Override
-            public void onClick(View view)
-            {
-                if (etEmail.getText().toString().trim().isEmpty())
-                {
-                    etEmail.setError(getResources().getString(R.string.errorLoginEmail));
-                }
-                if (etPassword.getText().toString().trim().isEmpty())
-                {
-                    etPassword.setError(getResources().getString(R.string.errorLoginPassword));
-                }
-                else
-                {
-                    loginUser();
-                }
-            }
-        });
+            etxtEmail.setError(getResources().getString(R.string.errorLoginEmail));
+            badConnection = true;
+        }
+        if (etxtPassword.getText().toString().trim().isEmpty())
+        {
+            etxtPassword.setError(getResources().getString(R.string.errorLoginPassword));
+            badConnection = true;
+        }
+        if (badConnection)
+        {
+            return;
+        }
+        loginUser();
     }
 
     /**
@@ -86,17 +60,17 @@ public class LoginActivity extends AppCompatActivity
     private void loginUser()
     {
         Intent login = null;
-        if(etxtEmail.getText().toString().equals("prof"))
+        switch (etxtEmail.getText().toString())
         {
-            login = new Intent(LoginActivity.this, AccueilProfActivity.class);
-        }
-        else if(etxtEmail.getText().toString().equals("admin"))
-        {
-            login = new Intent(LoginActivity.this, AccueilAdminActivity.class);
-        }
-        else
-        {
-            login = new Intent(LoginActivity.this, AcceuilEtudiantActivity.class);
+            case "prof":
+                login = new Intent(LoginActivity.this, AccueilProfActivity.class);
+                break;
+            case "admin":
+                login = new Intent(LoginActivity.this, AccueilAdminActivity.class);
+                break;
+            default:
+                login = new Intent(LoginActivity.this, AcceuilEtudiantActivity.class);
+                break;
         }
         startActivity(login);
     }

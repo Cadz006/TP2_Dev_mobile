@@ -30,6 +30,12 @@
     <string name="txtConfirmation">Confirmation de changement</string>
     <string name="messageConfirmationPhoto">Voulez-vous changer la photo courrante avec une nouvelle photo?</string>
     <string name="Oui">Oui</string>
+    <string name="metier_M" translatable="false">Matières et produits</string>
+    <string name="metier_É" translatable="false">Équipement</string>
+    <string name="metier_T" translatable="false">Tâches et exigences</string>
+    <string name="metier_I" translatable="false">Individu</string>
+    <string name="metier_E" translatable="false">Environnement de travail</string>
+    <string name="metier_R" translatable="false">Ressources humaines</string>
     <string name="Non">Non</string>
     <string name="PermissionAccepter">Permission Accepté</string>
     <string name="PermissionRefuse">Permission Refusé</string>
