@@ -10,13 +10,14 @@ public class Etudiant {
     private String type_token;
 
 
-    public Etudiant(String nomFamille, String prenom, String e_mail, boolean actif, String access, String type) {
+    public Etudiant(String nomFamille, String prenom, String e_mail, boolean actif, String access, String type, String password) {
         this.nom = nomFamille;
         this.prenom = prenom;
         this.email = e_mail;
         this.estActif = actif;
         this.acc_token = access;
         this.type_token = type;
+        this.password = password;
     }
 
     public String getNom() { return nom; }
@@ -30,5 +31,7 @@ public class Etudiant {
     public String getAcc_token() { return acc_token; }
 
     public String getType_token() { return type_token; }
+
+    public String getPassword() {return password; }
 
 }

@@ -52,4 +52,10 @@ public class AccueilAdminActivity extends AppCompatActivity
         Intent intent = new Intent(this, AjouterEnseignant.class);
         startActivity(intent);
     }
+
+    public void onClickEtudiant(View v)
+    {
+        Intent intent = new Intent(this, AjouterEtudiant.class);
+        startActivity(intent);
+    }
 }

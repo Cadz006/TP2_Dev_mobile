@@ -55,9 +55,9 @@ public class AccueilProfActivity extends AppCompatActivity {
     private void addSampleDataToListEtudiant()
     {
         listEtudiant = new ArrayList<>();
-        listEtudiant.add(new Etudiant("Cadieux", "Olivier", "ocadz@hotmail.ca", true, "", ""));
-        listEtudiant.add(new Etudiant("De La Barrière", "Guillaume", "mightguy@hotmail.ca", true, "", ""));
-        listEtudiant.add(new Etudiant("Phalakhone", "Nick", "nick@hotmail.ca", true, "", ""));
+        listEtudiant.add(new Etudiant("Cadieux", "Olivier", "ocadz@hotmail.ca", true, "", "", "password"));
+        listEtudiant.add(new Etudiant("De La Barrière", "Guillaume", "mightguy@hotmail.ca", true, "", "", "password"));
+        listEtudiant.add(new Etudiant("Phalakhone", "Nick", "nick@hotmail.ca", true, "", "", "password"));
     }
 
     /**
