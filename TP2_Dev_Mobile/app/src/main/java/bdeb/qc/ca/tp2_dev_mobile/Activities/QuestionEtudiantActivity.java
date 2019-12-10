@@ -24,6 +24,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -42,15 +43,13 @@ public class QuestionEtudiantActivity extends AppCompatActivity
     public static final int PRENDRE_PHOTO = 0;
     private QuestionListItem question;
     private ImageView ivPhoto;
-    private FloatingActionButton fabCamera;
-    private FloatingActionButton fabGallery;
-    private FloatingActionButton fabVoice;
-    private FloatingActionButton fabComment;
+    private FloatingActionButton fabCamera, fabGallery, fabVoice, fabComment, fabListen;
     private String pathSave = "";
     private boolean camGall;
     private boolean recording = false, start = false;
     private MediaRecorder recorder = null;
     private MediaPlayer player = null;
+    private TextView txtCommentaire, txtReponse;
 
 
     @Override
@@ -75,6 +74,9 @@ public class QuestionEtudiantActivity extends AppCompatActivity
         fabVoice = findViewById(R.id.fabReponseAudio);
         fabComment = findViewById(R.id.fabEcouterCommentaire);
         fabComment.setEnabled(false);
+        fabListen = findViewById(R.id.fabEcouterReponse);
+        txtCommentaire = findViewById(R.id.txtCommentaireEcrit);
+        txtReponse = findViewById(R.id.txtReponseEtudiant);
     }
 
     /**
@@ -110,6 +112,9 @@ public class QuestionEtudiantActivity extends AppCompatActivity
             fabCamera.hide();
             fabVoice.hide();
             fabGallery.hide();
+            fabListen.hide();
+            txtCommentaire.setEnabled(true);
+            txtReponse.setEnabled(false);
         }
     }
 
@@ -128,6 +133,43 @@ public class QuestionEtudiantActivity extends AppCompatActivity
             camGall = false;
             callAlertDialog();
         }
+    }
+
+
+    /**
+     * Cette méthode laisse le professeur ajouter un commentaire vocal ou écouter un commentaire
+     * selon l'utilisateur
+     * @param v
+     */
+    public void onCommentaireButtonClick(View v)
+    {
+
+        boolean isProf = getIntent().getBooleanExtra("IsProf", false);
+        if (isProf) {
+            if (!recording)
+            {
+                verifyPermissionsMic();
+                fabComment.setImageResource(R.drawable.ic_mic_off);
+            }
+            else
+            {
+                stopAudio();
+                fabComment.setImageResource(R.drawable.ic_mic);
+                txtCommentaire.setText(R.string.CommentaireExist);
+            }
+        }else{
+            if (!start)
+            {
+                startPlaying();
+                fabComment.setImageResource(R.drawable.ic_pause);
+            }
+            else
+            {
+                stopPlaying();
+                fabComment.setImageResource(R.drawable.ic_play_arrow);
+            }
+        }
+
     }
 
     /**
@@ -221,21 +263,22 @@ public class QuestionEtudiantActivity extends AppCompatActivity
      */
     public void onRecordVoiceButtonClick(View v)
     {
-        final FloatingActionButton fabRecord = findViewById(R.id.fabReponseAudio);
-        final FloatingActionButton fabListen = findViewById(R.id.fabEcouterReponse);
         if (!recording)
         {
             verifyPermissionsMic();
-            fabRecord.setImageResource(R.drawable.ic_mic_off);
+            fabVoice.setImageResource(R.drawable.ic_mic_off);
         }
         else
         {
             stopAudio();
-            fabRecord.setImageResource(R.drawable.ic_mic);
+            fabVoice.setImageResource(R.drawable.ic_mic);
             fabListen.setBackgroundTintList(getResources().getColorStateList(R.color.colorPrimary));
         }
     }
 
+    /**
+     *
+     */
     private void verifyPermissionsMic()
     {
         String[] permissions = {Manifest.permission.RECORD_AUDIO,

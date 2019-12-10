@@ -42,4 +42,5 @@
     <string name="deconnexion">Se déconnecter</string>
     <string name="Recording">Enregistrement</string>
     <string name="RecordingFailed">Enregistrement Échouer</string>
+    <string name="CommentaireExist">Il y a un nouveau commentaire audio</string>
 </resources>

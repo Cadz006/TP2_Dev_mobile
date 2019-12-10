@@ -6,6 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".Activities.QuestionEtudiantActivity">
 
+    <EditText
+        android:id="@+id/txtCommentaireEcrit"
+        android:layout_width="280dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:enabled="false"
+        android:gravity="start|top"
+        android:hint="@string/noComment"
+        android:inputType="textMultiLine"
+        android:maxLines="5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.661"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fabEcouterCommentaire" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabEcouterReponse"
         android:layout_width="wrap_content"
@@ -49,9 +67,10 @@
         android:id="@+id/fabEcouterCommentaire"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="36dp"
         android:clickable="true"
+        android:onClick="onCommentaireButtonClick"
         app:backgroundTint="#979B97"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fabCamera"
@@ -110,24 +129,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/fabReponseAudio"
         app:layout_constraintTop_toTopOf="@+id/fabReponseAudio" />
-
-    <TextView
-        android:id="@+id/txtCommenaire"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="30dp"
-        android:inputType="textMultiLine"
-        android:maxLines="4"
-        android:text="@string/noComment"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fabEcouterCommentaire"
-        app:layout_constraintVertical_bias="0.0" />
 
     <SeekBar
         android:id="@+id/seekBarCommentaire"

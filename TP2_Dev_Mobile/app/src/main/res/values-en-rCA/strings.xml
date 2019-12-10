@@ -37,4 +37,5 @@
     <string name="deconnexion">Logout</string>
     <string name="RecordingFailed">Recording Failed</string>
     <string name="Recording">Recording...</string>
+    <string name="CommentaireExist">There is a new audio comment</string>
 </resources>
