@@ -32,5 +32,6 @@
     <string name="messageConfirmationPhoto">Do you want to replace the current photo with a new one?</string>
     <string name="Non">No</string>
     <string name="Oui">Yes</string>
+    <string name="PermissionAccepter">Permission Granted</string>
+    <string name="PermissionRefuse">Permission Denied</string>
 </resources>
-
