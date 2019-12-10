@@ -51,7 +51,6 @@ public class QuestionEtudiantActivity extends AppCompatActivity {
     private boolean recording = false, start = false;
     private MediaRecorder recorder = null;
     private MediaPlayer player = null;
-    private boolean IsProf;
 
 
     @Override
