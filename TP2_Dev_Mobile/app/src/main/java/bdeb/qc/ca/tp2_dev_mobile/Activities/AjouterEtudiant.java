@@ -11,10 +11,11 @@ import androidx.appcompat.widget.Toolbar;
 
 import bdeb.qc.ca.tp2_dev_mobile.R;
 
-public class AjouterEtudiant extends AppCompatActivity {
-
+public class AjouterEtudiant extends AppCompatActivity
+{
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajout_compte);
         setupToolbar();
@@ -23,7 +24,8 @@ public class AjouterEtudiant extends AppCompatActivity {
     /**
      * Cette méthode set la toolbar avec un onClick qui ferme l'activité
      */
-    private void setupToolbar() {
+    private void setupToolbar()
+    {
         Toolbar toolbar = findViewById(R.id.toolbarAjout);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -35,9 +37,9 @@ public class AjouterEtudiant extends AppCompatActivity {
         });
     }
 
-
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_acceuil_admin_etudiant, menu);
         return true;

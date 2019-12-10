@@ -52,8 +52,8 @@ public class LoginActivity extends AppCompatActivity
     /**
      * Cette méthode permet à l'utilisateur de se logger.
      * Si les paramètres sont vides, il y a un message d'erreur.
-     * @param etEmail
-     * @param etPassword
+     * @param etEmail L'edit text qui contient le e-mail
+     * @param etPassword L'edit text qui contient le password
      */
     private void btnLoginListener(final EditText etEmail, final EditText etPassword)
     {
