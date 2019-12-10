@@ -216,7 +216,7 @@ public class QuestionEtudiantActivity extends AppCompatActivity
     }
 
     /**
-     *
+     * Cette méthode vérifie si l'application possède les droits
      * @param v
      */
     public void onRecordVoiceButtonClick(View v)
