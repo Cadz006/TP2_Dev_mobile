@@ -36,4 +36,8 @@
     <string name="metier_I" translatable="false">Individu</string>
     <string name="metier_E" translatable="false">Environnement de travail</string>
     <string name="metier_R" translatable="false">Ressources humaines</string>
+    <string name="Non">Non</string>
+    <string name="PermissionAccepter">Permission Accepté</string>
+    <string name="PermissionRefuse">Permission Refusé</string>
+    <string name="deconnexion">Se déconnecter</string>
 </resources>
