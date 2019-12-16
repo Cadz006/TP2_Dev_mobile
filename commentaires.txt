@@ -1,0 +1,15 @@
+Bonjour!
+
+Je suis un peu deçu.
+
+Aucun souci du détail.
+
+L'effort n'est pas là.
+
+A cinq membres et vous aviez 5 semaines pour compléter le tout. J'avais dit qualité avant quantité mais vous n'avez ni l'un ni l'utre.
+
+Si un étudiant écrit une réponse, je m'attends que le prof puisse la voir et la commenter et voir la photo.
+
+Pour la partie d'auto-évaluation: vous mentionnez la connexion avec l'API mais vous n'êtes même proches de vous connecter à la BD. 
+Si un étudiant réponds à une question, je m'attends à une classe qui englobe la question, la réponse, le chemin vers la photo, etc.
+Vous avez QuestionListItem mais il n'est pas prêt 

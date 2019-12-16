@@ -18,7 +18,7 @@ public class Metier implements Parcelable
 
         // pass this in arg instead. just for testing
         this.questions = new ArrayList<>();
-        this.questions.add(new QuestionListItem("Test0 ?"));
+        this.questions.add(new QuestionListItem("Test0 Test0 Test0 Test0 Test0 Test0 Test0 Test0 Test0 Test0 ?"));
         this.questions.add(new QuestionListItem("Test1 ?"));
         this.questions.add(new QuestionListItem("Test2 ?"));
         this.questions.add(new QuestionListItem("Test3 ?"));

@@ -35,6 +35,14 @@ import java.util.UUID;
 import bdeb.qc.ca.tp2_dev_mobile.Model.QuestionListItem;
 import bdeb.qc.ca.tp2_dev_mobile.R;
 
+/* comment je fais pour sauvegarder le tout????
+   Même si la database n'est pas fonctionnel, je m'attends à sauvegarder l'info, au moins pour la session?
+
+   La question est affichée dans la toolbar? Si la question est moindrement longue, visuellement, c'est difficile à suivre.
+
+   Le bouton dans la toolbar ne fait rien???
+
+ */
 public class QuestionEtudiantActivity extends AppCompatActivity
 {
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 1000;
@@ -124,8 +132,20 @@ public class QuestionEtudiantActivity extends AppCompatActivity
      */
     public void onCameraButtonClick(View v)
     {
+        // Code qui porte à confusion ici
+        // appeler une méthode qui demande si on remplace ou pas
+        // Si ça retourne vrai, vérifier les permissions
+        // Si tout est correct, on appelle la caméra
+        /*
+        if (onRemplace()) {
+            if (onALesPermissions()) {
+                prendreLaPhot();
+            }
+        }
+        */
         if (ivPhoto.getDrawable() == null)
         {
+            // Drôle de nom pour une méthode qui lance la caméra
             verifyPermissions();
         }
         else
