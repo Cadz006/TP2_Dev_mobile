@@ -35,6 +35,7 @@ public class AcceuilEtudiantActivity extends AppCompatActivity {
         addSampleDataToMetierList();
         createRecyclerView();
         addListenerToAdapter();
+        // utiliser un static final au lieu de "IsProf"
         IsProf = getIntent().getBooleanExtra("IsProf", false);
     }
 
